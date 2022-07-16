@@ -30,7 +30,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   image: AssetImage('./images/user.jpg'),
                 ).image,
               ),
-            ),
+            ),)
         ]
 
       )
