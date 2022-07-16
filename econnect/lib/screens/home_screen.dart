@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:econnect/constants.dart';
+import 'package:econnect/tabs/status_tab.dart';
+import 'package:econnect/tabs/chats_tab.dart';
+import 'package:econnect/tabs/calls_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -50,17 +53,27 @@ class _HomeScreenState extends State<HomeScreen> {
           bottom: const TabBar(
             indicatorColor: CustomColors.kLightColor,
             tabs:[
-              Tab(child: Text('Chats',
-                  style: CustomTextStyle.tabBarTextStyle,),),
+              Tab(
+                child: Text('Chats',
+                style: CustomTextStyle.tabBarTextStyle,),),
               Tab(child: Text('Status',
                   style: CustomTextStyle.tabBarTextStyle,),),
               Tab(child: Text('Calls',
                   style: CustomTextStyle.tabBarTextStyle,),),
           ])
         ),
-        )
-      
-      
-      ,);
+        body: const TabBarView(children: [
+          Center(
+            child: ChatTab()
+          ),
+          Center(
+            child: StatusTab(),
+          ),
+          Center(
+            child: CallTab(),
+          ),
+        ]),
+        ),      
+      );
   }
 }

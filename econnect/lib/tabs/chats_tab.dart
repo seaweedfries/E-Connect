@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-class CallTab extends StatefulWidget {
-  const CallTab({Key? key}) : super(key: key);
+class ChatTab extends StatefulWidget {
+  const ChatTab({Key? key}) : super(key: key);
 
   @override
-  State<CallTab> createState() => _CallTabState();
+  State<ChatTab> createState() => _ChatTabState();
 }
 
-class _CallTabState extends State<CallTab> {
+class _ChatTabState extends State<ChatTab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text('Call'),)
+      body: Center(child: Text('Chat'),)
     );
   }
 }

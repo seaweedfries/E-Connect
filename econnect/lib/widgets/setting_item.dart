@@ -19,7 +19,7 @@ class SettingItem extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Icon(
             icon,
-            color: CustomColors.kPrimaryColor,
+            color: CustomColors.kIconColor,
           ),
         ),
         title: Text(
@@ -36,7 +36,7 @@ class SettingItem extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Icon(
           icon,
-          color: CustomColors.kPrimaryColor,
+          color: CustomColors.kIconColor,
         ),
       ),
       title: Text(
