@@ -19,6 +19,9 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => HomeScreen(),
         '/settings': (context) => SettingsScreen(),
+        //'/newhome':(context) => NewHomeScreen(),
+        //'/newsettings':(context) => NewSettingsScreen(),
+
       },
       );
   }
