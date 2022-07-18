@@ -5,10 +5,17 @@ class SettingItem extends StatelessWidget {
 
   final IconData icon;
   final String title;
-  final String subtitle;
+  final String? subtitle;
   final padding;
 
-  SettingItem({this.icon = Icons.error, this.title = 'Error', this.subtitle = '', this.padding});
+  SettingItem(
+    {
+    this.icon = Icons.error, 
+    this.title = 'Error', 
+    this.subtitle, 
+    this.padding
+    }
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +53,7 @@ class SettingItem extends StatelessWidget {
         ),
       ),
       subtitle: Text(
-          subtitle
+        subtitle!
       ),
     );
   }
