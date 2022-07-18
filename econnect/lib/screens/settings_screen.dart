@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 import 'package:econnect/constants.dart';
 import 'package:econnect/widgets/setting_item.dart';
 
@@ -74,6 +73,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           SettingItem(
             icon: Icons.image_not_supported,
             title: 'Silver mode',
+            onTapp: '/silverscreen',
           ),
         ],
       ),

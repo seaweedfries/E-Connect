@@ -6,6 +6,7 @@ class SettingItem extends StatelessWidget {
   final IconData icon;
   final String title;
   final String? subtitle;
+  final String? onTapp;
   final padding;
 
   SettingItem(
@@ -13,6 +14,7 @@ class SettingItem extends StatelessWidget {
     this.icon = Icons.error, 
     this.title = 'Error', 
     this.subtitle, 
+    this.onTapp,
     this.padding
     }
   );
@@ -35,6 +37,7 @@ class SettingItem extends StatelessWidget {
             fontWeight: FontWeight.w500,
           ),
         ),
+        onTap: onTapp == null ? null : () => Navigator.pushNamed(context, onTapp!),
       );
     }
     return ListTile(
@@ -55,6 +58,7 @@ class SettingItem extends StatelessWidget {
       subtitle: Text(
         subtitle!
       ),
+      onTap: onTapp == null ? null : () => Navigator.pushNamed(context, onTapp!),
     );
   }
 

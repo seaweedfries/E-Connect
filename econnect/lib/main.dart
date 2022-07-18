@@ -1,6 +1,8 @@
 import 'package:econnect/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:econnect/screens/settings_screen.dart';
+import 'package:econnect/screens/load_screen.dart';
+import 'package:econnect/screens/silver_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -19,9 +21,10 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => HomeScreen(),
         '/settings': (context) => SettingsScreen(),
+        '/silverscreen': (context) => SilverScreen(),
+        '/loadscreen': (context) => LoadScreen(),
         //'/newhome':(context) => NewHomeScreen(),
         //'/newsettings':(context) => NewSettingsScreen(),
-
       },
       );
   }
