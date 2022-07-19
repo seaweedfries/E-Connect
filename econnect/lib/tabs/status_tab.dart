@@ -12,7 +12,13 @@ class StatusTab extends StatefulWidget {
 class _StatusTabState extends State<StatusTab> {
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: CustomColors.kPrimaryColor,
+        child: const Icon(Icons.camera_alt),
+      ),
+    body: ListView(
       children: <Widget>[
         ListTile(
           contentPadding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
@@ -30,13 +36,14 @@ class _StatusTabState extends State<StatusTab> {
             )
           ),
           title: const Text(
-            'carbohydrate',
-            style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500),
+            'My status',
+            style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w500),
           ),
           subtitle: const Text(
-            'hehe hci',
+            'Tap to add status update',
             style: TextStyle(fontSize: 13.0),
           ),
+          onTap: () {},
         ),
         const Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.0),
@@ -55,6 +62,7 @@ class _StatusTabState extends State<StatusTab> {
           ),
         )
       ]
+    )
     );
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:econnect/model/chat.dart';
+import '../model/chat.dart';
 
 class ChatItem extends StatelessWidget {
 
@@ -31,7 +31,7 @@ class ChatItem extends StatelessWidget {
       ),
     ),
     title: Text(
-      chat.name,
+      chat.messagesList[chat.messagesList.length - 1].text,
       maxLines: 1,
       style: const TextStyle(
         fontSize: 18.0,
@@ -45,7 +45,7 @@ class ChatItem extends StatelessWidget {
           ),
         Flexible(
           child: Text(
-            chat.lastMessage.content,
+            chat.messagesList[-1].text,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:econnect/constants.dart';
-import 'package:econnect/tabs/status_tab.dart';
-import 'package:econnect/tabs/chats_tab.dart';
-import 'package:econnect/tabs/calls_tab.dart';
+import '../constants.dart';
+import '../tabs/status_tab.dart';
+import '../tabs/chats_tab.dart';
+import '../tabs/calls_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -62,15 +62,26 @@ class _HomeScreenState extends State<HomeScreen> {
                   style: CustomTextStyle.tabBarTextStyle,),),
           ])
         ),
-        body: const TabBarView(children: [
+        body: TabBarView(children: [
           Center(
-            child: ChatTab()
+            child: ChatTab(
+              todos: List.generate(10,(i) => ChatItem(
+              'Todo $i',
+              'A description of what needs to be done for Todo $i',
+              ),
+              ),
+            )
           ),
-          Center(
+          const Center(
             child: StatusTab(),
           ),
           Center(
-            child: CallTab(),
+            child: CallTab(
+              todos: List.generate(10,(i) => CallItem(
+              'Todo $i',
+              'A description of what needs to be done for Todo $i',
+              ),),
+            ),
           ),
         ]),
         ),      

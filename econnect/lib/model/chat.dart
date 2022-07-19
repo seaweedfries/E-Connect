@@ -1,80 +1,23 @@
-import 'dart:convert';
-
-class Message {
-  String content;
-  DateTime timestamp;
-  bool isYou;
-  bool isRead;
-  bool isSent;
-
-  Message({
-    required this.content,
-    required this.timestamp,
-    required this.isYou,
-    required this.isRead,
-    required this.isSent
-  });
-
-  factory Message.fromJson(Map<String, dynamic> json) {
-    return Message(
-      content: json["content"],
-      timestamp: DateTime.parse(json["timestamp"]),
-      isYou: json["isYou"],
-      isRead: json["isRead"],
-      isSent: true,
-    );
-  }
-}
-
-Chat chatFromJson(String str) {
-  final jsonData = json.decode(str);
-  return Chat.fromJson(jsonData);
-}
-
-Chat chatFromJsonFull(String str) {
-  final jsonData = json.decode(str);
-  return Chat.fromJsonFull(jsonData);
-}
+import '../model/message.dart';
 
 class Chat {
-  int id;
-  String name;
-  String avatarUrl;
-  Message lastMessage;
-  List<Message> messages;
-  int unreadMessages;
+  final int chatId;
+  final String memberOneNumber;
+  final String memberTwoNumber;
+  final String memberOneName;
+  final String memberTwoName;
+  final String memberOneProfilePicUrl;
+  final String memberTwoProfilePicUrl;
+  final List<Message> messagesList;
 
   Chat({
-    required this.id,
-    required this.name,
-    required this.avatarUrl,
-    required this.lastMessage,
-    required this.messages,
-    required this.unreadMessages,
+    required this.chatId,
+    required this.memberOneNumber,
+    required this.memberTwoNumber,
+    required this.memberOneName,
+    required this.memberTwoName,
+    required this.memberOneProfilePicUrl,
+    required this.memberTwoProfilePicUrl,
+    required this.messagesList,
   });
-
-  factory Chat.fromJson(Map<String, dynamic> json) {
-    return Chat(
-      id: json["id"],
-      name: json["name"],
-      avatarUrl: json["avatarPath"],
-      messages: [],
-      lastMessage: Message.fromJson(json["lastMessage"]),
-      unreadMessages: json["unreadMessages"], 
-    );
-  }
-
-  factory Chat.fromJsonFull(Map<String, dynamic> json) {
-    List<Message> messages = <Message>[];
-    messages = json["messages"].map<Message>((i) => Message.fromJson(i)).toList();
-
-    return Chat(
-      id: json["id"],
-      name: json["name"],
-      avatarUrl: json["avatarPath"],
-      messages: messages,
-      unreadMessages: json["unreadMessages"], 
-      lastMessage: json[""],
-    );
-  }
 }

@@ -30,7 +30,9 @@ class _LoadScreenState extends State<LoadScreen> {
               'Preparing Silver Mode...',
               style: Theme.of(context).textTheme.headline6,
             ),
-            CircularProgressIndicator(),
+            CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.grey),
+            ),
           ],
         ),
       ),

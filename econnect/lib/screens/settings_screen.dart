@@ -45,30 +45,36 @@ class _SettingsScreenState extends State<SettingsScreen> {
             icon: Icons.vpn_key,
             title: 'Account',
             subtitle: 'Privacy, security, change number',
+            onTapp: '',
           ),
           SettingItem(
             icon: Icons.chat,
             title: 'Chats',
             subtitle: 'Theme, wallpapers, chat history',
+            onTapp: '',
           ),
           SettingItem(
             icon: Icons.notifications,
             title: 'Notifications',
             subtitle: 'Message, group & call tones',
+            onTapp: '',
           ),
           SettingItem(
             icon: Icons.data_usage_rounded,
             title: 'Storage and data',
             subtitle: 'Network usage, auto-download',
+            onTapp: '',
           ),
           SettingItem(
             icon: Icons.help_outline_outlined,
             title: 'Help',
             subtitle: 'Help centre, contact us, privacy policy',
+            onTapp: '',
           ),
           SettingItem(
             icon: Icons.group,
             title: 'Invite a friend',
+            onTapp: '',
           ),
           SettingItem(
             icon: Icons.image_not_supported,

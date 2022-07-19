@@ -1,5 +1,5 @@
-import 'package:econnect/data/message_data.dart';
-import 'package:econnect/model/chat.dart';
+import '../data/message_data.dart';
+import '../model/chat.dart';
 
 final List<Chat> chats = [
   // Chat 1.
