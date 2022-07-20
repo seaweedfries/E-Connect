@@ -8,7 +8,7 @@ class ChatMessageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isMe = message.senderNumber == '123456789';
+    bool isMe = message.senderNumber == 'user';
 
     return Container(
       margin: EdgeInsets.symmetric(vertical: 5.0, horizontal: 5.0),

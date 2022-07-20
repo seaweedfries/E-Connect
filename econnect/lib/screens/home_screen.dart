@@ -65,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
         body: TabBarView(children: [
           Center(
             child: ChatTab(
-              todos: List.generate(10,(i) => ChatItem(
+              todos: List.generate(3,(i) => ChatItem(
               'Todo $i',
               'A description of what needs to be done for Todo $i',
               ),
@@ -77,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Center(
             child: CallTab(
-              todos: List.generate(10,(i) => CallItem(
+              todos: List.generate(2,(i) => CallItem(
               'Todo $i',
               'A description of what needs to be done for Todo $i',
               ),),
