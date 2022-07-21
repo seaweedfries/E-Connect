@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import '../model/message.dart';
 
-TextEditingController textEditingController = TextEditingController();
-
-final List<Message> messages = [
+List<Message> messages = [
   // Conversation 1
     Message(text: 'Hey', time: '08:00 AM', senderNumber: '98304761'),
     Message(text: 'Hello', time: '08:01 AM', senderNumber: 'user'),

@@ -1,5 +1,4 @@
 import 'package:econnect/constants.dart';
-import 'package:econnect/widgets/input_item.dart';
 import 'package:flutter/material.dart';
 import '../model/chat.dart';
 import '../widgets/chat_item.dart';

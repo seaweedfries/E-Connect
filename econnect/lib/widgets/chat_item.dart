@@ -1,8 +1,22 @@
+import 'dart:async';
+import 'dart:io';
 import 'package:econnect/data/message_data.dart';
 import 'package:flutter/material.dart';
 import '../constants.dart';
-import '../model/chat.dart';
+import '../data/message_data.dart';
 import '../model/message.dart';
+
+final _textEditingController = TextEditingController();
+ScrollController _controller = ScrollController();
+
+Future<List<Message>> updateChat() async {
+  var result = await someFutureCall(); //change to api call later
+  return result;
+}
+
+List<Message> someFutureCall() { //remove later
+  return messages;
+}
 
 class ChatItem extends StatefulWidget {
   const ChatItem({Key? key}) : super(key: key);
@@ -12,6 +26,7 @@ class ChatItem extends StatefulWidget {
 }
 
 class _ChatState extends State<ChatItem> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +36,7 @@ class _ChatState extends State<ChatItem> {
             children: [
               Flexible(
                 child: ListView(
-                  controller: ScrollController(),
+                  controller: _controller,
                   children: [
                   for (var message in messages)
                     ChatMessageWidget(message),
@@ -39,13 +54,13 @@ class _ChatState extends State<ChatItem> {
 class ChatMessageWidget extends StatelessWidget {
   final Message message;
   ChatMessageWidget(this.message);
+  late String _title;
 
   @override
   Widget build(BuildContext context) {
     bool isMe = message.senderNumber == 'user';
 
     return Container(
-      color: Colors.transparent,
       margin: EdgeInsets.symmetric(vertical: 5.0, horizontal: 5.0),
       child: Row(
         mainAxisAlignment:
@@ -63,6 +78,85 @@ class ChatMessageWidget extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class InputItem extends StatefulWidget {
+  const InputItem({Key? key}) : super(key: key);
+
+  @override
+  State<InputItem> createState() => _InputItemState();
+}
+
+class _InputItemState extends State<InputItem> {
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 50.0,
+      child: Row(
+        children: <Widget> [
+          Expanded(
+            child: TextField(
+              controller: _textEditingController,
+              onTap: () {
+                Timer (
+                  Duration(milliseconds: 300),
+                  () => _controller.jumpTo(_controller.position.maxScrollExtent),
+                );
+              },
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
+                contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                hintText: 'Message',
+              ),
+              textInputAction: TextInputAction.send,
+              style: TextStyle (
+                fontSize: 16.0,
+                color: Colors.black,
+              ),
+              onSubmitted: (value) => setState(() {
+                if (value.isNotEmpty) {
+                  messages.add(
+                    Message(
+                      text: value, 
+                      time: DateTime.now().toString(), 
+                      senderNumber: 'user'
+                    )
+                  );
+                _textEditingController.clear();
+                }                
+              }),
+            ),
+          ),
+          Container(
+            width: 50.0,
+            child: InkWell(
+              onTap: () {
+                setState(() {
+                  if (_textEditingController.text.trim().isNotEmpty) {
+                  messages.add(
+                    Message(
+                      text: _textEditingController.text.trim(), 
+                      time: DateTime.now().toString(), 
+                      senderNumber: 'user'
+                    )
+                  );}
+                _textEditingController.clear();                
+                });
+              },
+              child: Icon(
+                Icons.send,
+                color: CustomColors.kIconColor,
+              )
+            )
+          )
+        ]
+      )
     );
   }
 }
