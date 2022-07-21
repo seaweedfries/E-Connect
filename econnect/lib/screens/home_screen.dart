@@ -3,6 +3,8 @@ import '../constants.dart';
 import '../tabs/status_tab.dart';
 import '../tabs/chats_tab.dart';
 import '../tabs/calls_tab.dart';
+import '../model/chat.dart';
+import '../data/chats.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -65,12 +67,8 @@ class _HomeScreenState extends State<HomeScreen> {
         body: TabBarView(children: [
           Center(
             child: ChatTab(
-              todos: List.generate(3,(i) => ChatItem(
-              'Todo $i',
-              'A description of what needs to be done for Todo $i',
-              ),
-              ),
-            )
+              chats: chats,
+              )
           ),
           const Center(
             child: StatusTab(),

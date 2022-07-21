@@ -2,7 +2,6 @@ import 'package:econnect/model/message.dart';
 import 'package:flutter/material.dart';
 import '../data/message_data.dart';
 
-
 void addNewMessage() {
   if (textEditingController.text.trim().isNotEmpty) {
     Message newMessage = Message(

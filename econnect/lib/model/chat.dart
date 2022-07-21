@@ -1,23 +1,10 @@
 import '../model/message.dart';
 
 class Chat {
-  final int chatID;
-  final String chatName;
-  final String chatPic;
-  final String chatLastMessage;
-  final String chatLastMessageTime;
-  final String chatLastMessageSender;
-  final String chatmember;
-  final List<Message> messagesList;
+  final String pic;
+  final String name;
+  final String lastmessage;
+  final String lastmessagetime;
 
-  Chat({
-    required this.chatID,
-    required this.chatName,
-    required this.chatPic,
-    required this.chatLastMessage,
-    required this.chatLastMessageTime,
-    required this.chatLastMessageSender,
-    required this.chatmember,
-    required this.messagesList,
-  });
+  Chat({required this.pic, required this.name, required this.lastmessage, required this.lastmessagetime});
 }

@@ -1,17 +1,14 @@
 import 'package:econnect/constants.dart';
+import 'package:econnect/widgets/input_item.dart';
 import 'package:flutter/material.dart';
-
-class ChatItem {
-  final String title;
-  final String description;
-
-  const ChatItem(this.title, this.description);
-}
+import '../model/chat.dart';
+import '../widgets/chat_item.dart';
+import '../data/chats.dart';
 
 class ChatTab extends StatelessWidget {
-  const ChatTab({Key? key, required this.todos}) : super(key: key);
+  const ChatTab({Key? key, required this.chats}) : super(key: key);
 
-  final List<ChatItem> todos;
+  final List chats;
 
   @override
   Widget build(BuildContext context) {
@@ -22,32 +19,32 @@ class ChatTab extends StatelessWidget {
         child: const Icon(Icons.chat),
       ),
       body: ListView.builder(
-        itemCount: todos.length,
+        itemCount: chats.length,
         itemBuilder: (context, index) {
           return ListTile(
             leading: CircleAvatar(
             radius: 25,
-            backgroundImage: AssetImage('images/user.jpg'),
-          ),
+            backgroundImage: AssetImage(chats[index].pic),
+            ),
             title: Text(
-              todos[index].title,
+              chats[index].name,
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),),        
             subtitle: Container(
             margin: EdgeInsets.only(top: 5.0),
             child: Text(
-              'subtitle',
+              chats[index].lastmessage,
               style: TextStyle(fontSize: 13.0),
               ),
             ),
             trailing: Text(
-              'trailing',
+              chats[index].lastmessagetime,
               style: TextStyle(fontSize: 10.0, color: Colors.grey),
             ),
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => DetailChatScreen(todo: todos[index]),
+                  builder: (context) => DetailChatScreen(chat: chats[index]),
                 ),
               );
             },
@@ -59,13 +56,12 @@ class ChatTab extends StatelessWidget {
 }
 
 class DetailChatScreen extends StatelessWidget {
-  const DetailChatScreen({super.key, required this.todo});
+  const DetailChatScreen({super.key, required this.chat});
 
-  final ChatItem todo;
+  final Chat chat;
 
   @override
   Widget build(BuildContext context) {
-    // Use the Todo to create the UI.
     return Scaffold(
       appBar: AppBar(
         leading: Row(
@@ -79,7 +75,7 @@ class DetailChatScreen extends StatelessWidget {
             ),
           ],
         ),
-        title: Text(todo.title),
+        title: Text(chat.name),
         actions: [
           IconButton(
             icon: Icon(Icons.video_call),
@@ -104,13 +100,12 @@ class DetailChatScreen extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-            ),
-            Container(
               padding: const EdgeInsets.all(16.0),
-              child: Text(todo.description),
+              child: ChatItem(),
             ),
           ]
       ),
+      bottomNavigationBar: InputItem(),
     );
   }
 }
