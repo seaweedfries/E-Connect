@@ -3,19 +3,19 @@ import 'dart:async';
 
 import '../constants.dart';
 
-class LoadScreen extends StatefulWidget {
-  const LoadScreen({Key? key}) : super(key: key);
+class NewLoadScreen extends StatefulWidget {
+  const NewLoadScreen({Key? key}) : super(key: key);
 
   @override
-  State<LoadScreen> createState() => _LoadScreenState();
+  State<NewLoadScreen> createState() => _NewLoadScreenState();
 }
 
-class _LoadScreenState extends State<LoadScreen> {
+class _NewLoadScreenState extends State<NewLoadScreen> {
   @override
   Widget build(BuildContext context) {
     Timer(
       Duration(seconds: 3),
-      () => Navigator.pushNamedAndRemoveUntil(context, '/newhome', (_) => false), 
+      () => Navigator.pushNamedAndRemoveUntil(context, '/', (_) => false), 
     );
     return Scaffold(
       appBar: AppBar(
@@ -27,7 +27,7 @@ class _LoadScreenState extends State<LoadScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             Text(
-              'Preparing Silver Mode...',
+              'Leaving Silver Mode...',
               style: Theme.of(context).textTheme.headline6,
             ),
             CircularProgressIndicator(

@@ -1,4 +1,8 @@
 import 'package:econnect/screens/home_screen.dart';
+import 'package:econnect/screens/new_home_screen.dart';
+import 'package:econnect/screens/new_load_screen.dart';
+import 'package:econnect/screens/new_settings_screen.dart';
+import 'package:econnect/screens/new_silver_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:econnect/screens/settings_screen.dart';
 import 'package:econnect/screens/load_screen.dart';
@@ -23,8 +27,10 @@ class MyApp extends StatelessWidget {
         '/settings': (context) => SettingsScreen(),
         '/silverscreen': (context) => SilverScreen(),
         '/loadscreen': (context) => LoadScreen(),
-        //'/newhome':(context) => NewHomeScreen(),
-        //'/newsettings':(context) => NewSettingsScreen(),
+        '/newhome':(context) => NewHomeScreen(),
+        '/newsilverscreen':(context) => NewSilverScreen(),
+        '/newloadscreen':(context) => NewLoadScreen(),
+        '/newsettings':(context) => NewSettingsScreen(),
       },
       );
   }
