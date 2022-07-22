@@ -14,7 +14,7 @@ class _NewLoadScreenState extends State<NewLoadScreen> {
   @override
   Widget build(BuildContext context) {
     Timer(
-      Duration(seconds: 3),
+      const Duration(seconds: 3),
       () => Navigator.pushNamedAndRemoveUntil(context, '/', (_) => false), 
     );
     return Scaffold(
@@ -30,7 +30,7 @@ class _NewLoadScreenState extends State<NewLoadScreen> {
               'Leaving Silver Mode...',
               style: Theme.of(context).textTheme.headline6,
             ),
-            CircularProgressIndicator(
+            const CircularProgressIndicator(
               valueColor: AlwaysStoppedAnimation<Color>(Colors.grey),
             ),
           ],

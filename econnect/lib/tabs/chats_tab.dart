@@ -2,7 +2,6 @@ import 'package:econnect/constants.dart';
 import 'package:flutter/material.dart';
 import '../model/chat.dart';
 import '../widgets/chat_item.dart';
-import '../data/chats.dart';
 
 class ChatTab extends StatelessWidget {
   const ChatTab({Key? key, required this.chats}) : super(key: key);
@@ -27,17 +26,17 @@ class ChatTab extends StatelessWidget {
             ),
             title: Text(
               chats[index].name,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),),        
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),),        
             subtitle: Container(
-            margin: EdgeInsets.only(top: 5.0),
+            margin: const EdgeInsets.only(top: 5.0),
             child: Text(
               chats[index].lastmessage,
-              style: TextStyle(fontSize: 13.0),
+              style: const TextStyle(fontSize: 13.0),
               ),
             ),
             trailing: Text(
               chats[index].lastmessagetime,
-              style: TextStyle(fontSize: 10.0, color: Colors.grey),
+              style: const TextStyle(fontSize: 10.0, color: Colors.grey),
             ),
             onTap: () {
               Navigator.push(
@@ -63,10 +62,10 @@ class DetailChatScreen extends StatefulWidget {
 }
 
 class _DetailChatScreenState extends State<DetailChatScreen> {
-  @override
   void refreshParent() {
     setState(() {});
   }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -74,25 +73,25 @@ class _DetailChatScreenState extends State<DetailChatScreen> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             IconButton(
-              icon: Icon(Icons.arrow_back, size: 20),
+              icon: const Icon(Icons.arrow_back, size: 20),
               onPressed: () {
                 Navigator.pop(context);
               },
             ),
           ],
         ),
-        title: Text('chat'),
+        title: Text(widget.chat.name),
         actions: [
           IconButton(
-            icon: Icon(Icons.video_call),
+            icon: const Icon(Icons.video_call),
             onPressed: () {},
           ),
           IconButton(
-            icon: Icon(Icons.call),
+            icon: const Icon(Icons.call),
             onPressed: () {},
           ),
           IconButton(
-            icon: Icon(Icons.more_vert),
+            icon: const Icon(Icons.more_vert),
             onPressed: () {},
           ),
         ],
@@ -100,7 +99,7 @@ class _DetailChatScreenState extends State<DetailChatScreen> {
         body: Stack(
           children: <Widget> [
             Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('images/background.jpg'),
                   fit: BoxFit.cover,
