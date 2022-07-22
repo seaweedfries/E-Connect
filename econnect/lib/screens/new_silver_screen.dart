@@ -38,7 +38,7 @@ class _NewSilverScreenState extends State<NewSilverScreen> {
             ),
             const SizedBox(height: 16.0),
             Text(
-              'Silver Mode is an experimental feature that allows you to use a more simplified version of the app and interact with a built-in chatbot.',
+              'Silver Mode is an experimental feature that allows you to use a more simplified version of the app and interact with a built-in helpbot.',
               style: TextStyle(fontSize: 13.0),
             ),
           ]

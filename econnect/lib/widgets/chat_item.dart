@@ -83,7 +83,8 @@ class ChatMessageWidget extends StatelessWidget {
 }
 
 class InputItem extends StatefulWidget {
-  const InputItem({Key? key}) : super(key: key);
+  const InputItem({Key? key, required this.function}) : super(key: key);
+  final Function() function;
 
   @override
   State<InputItem> createState() => _InputItemState();
@@ -129,6 +130,7 @@ class _InputItemState extends State<InputItem> {
                     )
                   );
                 _textEditingController.clear();
+                widget.function();
                 }                
               }),
             ),

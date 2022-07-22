@@ -54,12 +54,19 @@ class ChatTab extends StatelessWidget {
   }
 }
 
-class DetailChatScreen extends StatelessWidget {
-  const DetailChatScreen({super.key, required this.chat});
-
+class DetailChatScreen extends StatefulWidget {
+  const DetailChatScreen({Key? key, required this.chat}) : super(key: key);
   final Chat chat;
 
   @override
+  State<DetailChatScreen> createState() => _DetailChatScreenState();
+}
+
+class _DetailChatScreenState extends State<DetailChatScreen> {
+  @override
+  void refreshParent() {
+    setState(() {});
+  }
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -74,7 +81,7 @@ class DetailChatScreen extends StatelessWidget {
             ),
           ],
         ),
-        title: Text(chat.name),
+        title: Text('chat'),
         actions: [
           IconButton(
             icon: Icon(Icons.video_call),
@@ -104,7 +111,7 @@ class DetailChatScreen extends StatelessWidget {
             ),
           ]
       ),
-      bottomNavigationBar: InputItem(),
+      bottomNavigationBar: InputItem(function: refreshParent),
     );
   }
 }
