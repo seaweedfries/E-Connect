@@ -63,13 +63,13 @@ class _NewHomeScreenState extends State<NewHomeScreen> {
         body: TabBarView(children: [
           Center(
             child: ChatTab(
-              chats: chats,
+              chats: botchats,
               )
           ),
           Center(
             child: CallTab(
               todos: List.generate(2,(i) => CallItem(
-              'Todo $i',
+              'Contact $i',
               'A description of what needs to be done for Todo $i',
               ),),
             ),

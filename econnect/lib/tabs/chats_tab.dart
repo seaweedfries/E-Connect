@@ -1,4 +1,5 @@
 import 'package:econnect/constants.dart';
+import 'package:econnect/data/chats.dart';
 import 'package:flutter/material.dart';
 import '../model/chat.dart';
 import '../widgets/chat_item.dart';
@@ -26,25 +27,36 @@ class ChatTab extends StatelessWidget {
             ),
             title: Text(
               chats[index].name,
+              overflow: TextOverflow.ellipsis,
               style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),),        
             subtitle: Container(
             margin: const EdgeInsets.only(top: 5.0),
             child: Text(
-              chats[index].lastmessage,
+              chats[index].messageList.last.text,
+              overflow: TextOverflow.ellipsis,
               style: const TextStyle(fontSize: 13.0),
               ),
             ),
             trailing: Text(
-              chats[index].lastmessagetime,
+              chats[index].messageList.last.time,
+              overflow: TextOverflow.ellipsis,
               style: const TextStyle(fontSize: 10.0, color: Colors.grey),
             ),
             onTap: () {
+              if (chats[index].name == 'Helpbot') {
+                Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DetailBotScreen(chat: chats[index]),
+                ),
+              );
+              } else {
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => DetailChatScreen(chat: chats[index]),
                 ),
-              );
+              );}
             },
           );
         },
@@ -106,11 +118,73 @@ class _DetailChatScreenState extends State<DetailChatScreen> {
                 ),
               ),
               padding: const EdgeInsets.all(16.0),
-              child: ChatItem(),
+              child: ChatItem(chat: widget.chat),
             ),
           ]
       ),
-      bottomNavigationBar: InputItem(function: refreshParent),
+      bottomNavigationBar: InputItem(chat: widget.chat,function: refreshParent),
+    );
+  }
+}
+
+class DetailBotScreen extends StatefulWidget {
+  const DetailBotScreen({Key? key, required this.chat}) : super(key: key);
+  final Chat chat;
+
+  @override
+  State<DetailBotScreen> createState() => _DetailBotScreenState();
+}
+
+class _DetailBotScreenState extends State<DetailBotScreen> {
+  void refreshParent() {
+    setState(() {});
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        leading: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            IconButton(
+              icon: const Icon(Icons.arrow_back, size: 20),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
+        title: Text(widget.chat.name),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.video_call),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: const Icon(Icons.call),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: const Icon(Icons.more_vert),
+            onPressed: () {},
+          ),
+        ],
+        ),
+        body: Stack(
+          children: <Widget> [
+            Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('images/background.jpg'),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              padding: const EdgeInsets.all(16.0),
+              child: ChatItem(chat: widget.chat),
+            ),
+          ]
+      ),
+      bottomNavigationBar: InputBotItem(chat: widget.chat,function: refreshParent),
     );
   }
 }
