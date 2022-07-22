@@ -22,5 +22,5 @@ List<Message> bot = [
     Message(text: 'Not only can I provide step-by-step guides on how to access various Whatsapp features.', time: '', senderNumber: 'bot'),
     Message(text: 'I can also provide suggestions and recommendations for a more socially active lifestyle!', time: '', senderNumber: 'bot'),
     Message(text: 'I am also a chatbot, so you can also chat with me.', time: '', senderNumber: 'bot'),
-    Message(text: 'Send "/hello" to get started! Alternatively, you can click on the More button on the bottom left of your screen.', time: '', senderNumber: 'bot'),
+    Message(text: 'Send "/preferences" to get started! Alternatively, you can click on the More button on the bottom left of your screen.', time: '', senderNumber: 'bot'),
   ];
