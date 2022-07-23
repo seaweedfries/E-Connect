@@ -32,7 +32,7 @@ class _SilverScreenState extends State<SilverScreen> {
             ),
             const SizedBox(height: 25.0),
             Image(
-              image: AssetImage('images/user.jpg',),
+              image: AssetImage('images/42877.jpg',),
               fit: BoxFit.cover,
               height: MediaQuery.of(context).size.height * 0.5,
             ),
