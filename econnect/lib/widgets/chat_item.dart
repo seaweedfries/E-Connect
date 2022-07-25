@@ -183,10 +183,10 @@ class _InputBotItemState extends State<InputBotItem> {
     //                 time: DateTime.now().toString(),
     //                 senderNumber: 'bot'),
     //           ));
-    String decoded = '';
+    var decoded = '';
     var response = await http.post(Uri.parse('http://127.0.0.1:5000/'),body: {value});
     if (response.statusCode == 201) {
-      final String decoded = String.fromJson(jsonDecode(response.body)); 
+      var decoded = jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>; 
     }
     widget.chat.messageList.add(
       Message(
