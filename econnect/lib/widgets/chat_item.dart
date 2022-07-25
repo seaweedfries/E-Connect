@@ -188,6 +188,7 @@ class _InputBotItemState extends State<InputBotItem> {
     if (response.statusCode == 201) {
       var decoded = jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>; 
     }
+    if (decoded.isNotEmpty) {
     widget.chat.messageList.add(
       Message(
         text: decoded,
@@ -195,7 +196,7 @@ class _InputBotItemState extends State<InputBotItem> {
         senderNumber: 'bot',
       )
     );
-      // Timer(Duration(seconds: i + 5), () => widget.function());
+    Timer(Duration(seconds: 5), () => widget.function()); }
     }
     
   @override
