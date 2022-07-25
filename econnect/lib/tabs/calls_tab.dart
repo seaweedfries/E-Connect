@@ -85,7 +85,7 @@ class DetailCallScreen extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('../../assets/images/background.jpg'),
+              image: AssetImage('images/background.png'),
               fit: BoxFit.cover,
             ),
           ),

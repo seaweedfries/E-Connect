@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:econnect/screens/settings_screen.dart';
 import 'package:econnect/screens/load_screen.dart';
 import 'package:econnect/screens/silver_screen.dart';
+import 'package:postgres/postgres.dart';
 
 void main() {
   runApp(MyApp());
