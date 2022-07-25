@@ -12,10 +12,10 @@ class _SilverScreenState extends State<SilverScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Silver Mode'),
-          backgroundColor: CustomColors.kPrimaryColor,
-        ),
+      appBar: AppBar(
+        title: const Text('Silver Mode'),
+        backgroundColor: CustomColors.kPrimaryColor,
+      ),
         body: Container(
           padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
           child: Column(
