@@ -2,16 +2,11 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 
 class CallItem {
-  final String title;
-  final String description;
-
-  const CallItem(this.title, this.description);
+  const CallItem();
 }
 
 class CallTab extends StatelessWidget {
-  const CallTab({Key? key, required this.todos}) : super(key: key);
-
-  final List<CallItem> todos;
+  const CallTab({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,47 +16,36 @@ class CallTab extends StatelessWidget {
         backgroundColor: CustomColors.kPrimaryColor,
         child: const Icon(Icons.add_call),
       ),
-      body: ListView.builder(
-        itemCount: todos.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            leading: CircleAvatar(
+      body: ListTile(
+        leading: CircleAvatar(
             radius: 25,
-            backgroundImage: AssetImage('images/user.jpg'),
+            backgroundImage: AssetImage('images/person3.jpg'),
           ),
             title: Text(
-              todos[index].title,
+              'Bob',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),),        
             subtitle: Container(
             margin: EdgeInsets.only(top: 5.0),
             child: Text(
-              'subtitle',
+              DateTime.now().toString(),
               style: TextStyle(fontSize: 13.0),
               ),
-            ),
-            trailing: Text(
-              'trailing',
-              style: TextStyle(fontSize: 10.0, color: Colors.grey),
             ),
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => DetailCallScreen(todo: todos[index]),
+                  builder: (context) => DetailCallScreen(),
                 ),
               );
             },
-          );
-        },
-      ),
+          ),
     );
   }
 }
 
 class DetailCallScreen extends StatelessWidget {
-  const DetailCallScreen({super.key, required this.todo});
-
-  final CallItem todo;
+  const DetailCallScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -80,22 +64,44 @@ class DetailCallScreen extends StatelessWidget {
           ),
         ],
         ),
-        body: Stack(
-          children: <Widget> [
-            Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('images/background.jpg'),
-                  fit: BoxFit.cover,
-                ),
+        body: ListView(
+      children: <Widget>[
+        ListTile(
+          contentPadding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
+          leading: CircleAvatar(
+            radius: 30.0,
+            backgroundImage: const Image(
+              image: AssetImage('./images/person3.jpg'),
+            ).image,
+          ),
+          title: const Text(
+            'Bob',
+          ),
+          trailing: Wrap(
+            children: <Widget>[
+              IconButton(
+                icon: Icon(Icons.call),
+                onPressed: () {
+                  //Callingscreen();
+                },
               ),
-            ),
-            Container(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(todo.description),
-            ),
-          ]
-      ),
+              IconButton(
+                icon: Icon(Icons.videocam),
+                onPressed: () {
+                  //VideoCallingScreen();
+                },
+              ),
+            ],
+          )
+        ),
+        ListTile(
+          leading: Icon(Icons.call_made, color: Colors.green,),
+          title: const Text('Outgoing'),
+          subtitle: Text(DateTime.now().toString()),
+          trailing: const Text('Not answered', style: TextStyle(fontWeight: FontWeight.w500, color: Color.fromARGB(255, 125, 125, 125)),), 
+        ),
+      ]
+    )
     );
   }
 }
