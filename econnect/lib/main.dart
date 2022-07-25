@@ -3,11 +3,13 @@ import 'package:econnect/screens/new_home_screen.dart';
 import 'package:econnect/screens/new_load_screen.dart';
 import 'package:econnect/screens/new_settings_screen.dart';
 import 'package:econnect/screens/new_silver_screen.dart';
-import 'package:flutter/material.dart';
 import 'package:econnect/screens/settings_screen.dart';
 import 'package:econnect/screens/load_screen.dart';
 import 'package:econnect/screens/silver_screen.dart';
-import 'package:postgres/postgres.dart';
+
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 void main() {
   runApp(MyApp());

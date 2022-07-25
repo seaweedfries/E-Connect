@@ -17,7 +17,6 @@ class ChatItem extends StatefulWidget {
 }
 
 class _ChatState extends State<ChatItem> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,9 +28,9 @@ class _ChatState extends State<ChatItem> {
                 child: ListView(
                   controller: _controller,
                   children: [
-                  for (var message in widget.chat.messageList)
-                    ChatMessageWidget(message: message),
-                  ], 
+                    for (var message in widget.chat.messageList)
+                      ChatMessageWidget(message: message),
+                  ],
                 ),
               ),
             ],
@@ -73,7 +72,8 @@ class ChatMessageWidget extends StatelessWidget {
 }
 
 class InputItem extends StatefulWidget {
-  const InputItem({Key? key, required this.function, required this.chat}) : super(key: key);
+  const InputItem({Key? key, required this.function, required this.chat})
+      : super(key: key);
   final Function() function;
   final Chat chat;
 
@@ -82,80 +82,71 @@ class InputItem extends StatefulWidget {
 }
 
 class _InputItemState extends State<InputItem> {
-
-
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50.0,
-      child: Row(
-        children: <Widget> [
+        height: 50.0,
+        child: Row(children: <Widget>[
           Expanded(
             child: TextField(
               controller: _textEditingController,
               onTap: () {
-                Timer (
+                Timer(
                   Duration(milliseconds: 300),
-                  () => _controller.jumpTo(_controller.position.maxScrollExtent),
+                  () =>
+                      _controller.jumpTo(_controller.position.maxScrollExtent),
                 );
               },
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(30.0),
                 ),
-                contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                contentPadding:
+                    EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
                 hintText: 'Message',
               ),
               textInputAction: TextInputAction.send,
-              style: TextStyle (
+              style: TextStyle(
                 fontSize: 16.0,
                 color: Colors.black,
               ),
               onSubmitted: (value) => setState(() {
                 if (value.isNotEmpty) {
-                  widget.chat.messageList.add(
-                    Message(
-                      text: value, 
-                      time: DateTime.now().toString(), 
-                      senderNumber: 'user'
-                    )
-                  );
-                _textEditingController.clear();
-                widget.function();
-                }                
+                  widget.chat.messageList.add(Message(
+                      text: value,
+                      time: DateTime.now().toString(),
+                      senderNumber: 'user'));
+                  _textEditingController.clear();
+                  widget.function();
+                }
               }),
             ),
           ),
           Container(
-            width: 50.0,
-            child: InkWell(
-              onTap: () {
-                setState(() {
-                  if (_textEditingController.text.trim().isNotEmpty) {
-                  widget.chat.messageList.add(
-                    Message(
-                      text: _textEditingController.text.trim(), 
-                      time: DateTime.now().toString(), 
-                      senderNumber: 'user'
-                    )
-                  );}
-                _textEditingController.clear();                
-                });
-              },
-              child: const Icon(
-                Icons.send,
-                color: CustomColors.kIconColor,
-              )
-            )
-          )
-        ]
-      )
-    );
+              width: 50.0,
+              child: InkWell(
+                  onTap: () {
+                    setState(() {
+                      if (_textEditingController.text.trim().isNotEmpty) {
+                        widget.chat.messageList.add(Message(
+                            text: _textEditingController.text.trim(),
+                            time: DateTime.now().toString(),
+                            senderNumber: 'user'));
+                      }
+                      _textEditingController.clear();
+                    });
+                  },
+                  child: const Icon(
+                    Icons.send,
+                    color: CustomColors.kIconColor,
+                  )))
+        ]));
   }
 }
 
 class InputBotItem extends StatefulWidget {
-  const InputBotItem({Key? key, required this.function, required this.chat}) : super(key: key);
+  const InputBotItem({Key? key, required this.function, required this.chat})
+      : super(key: key);
   final Function() function;
   final Chat chat;
 
@@ -164,115 +155,103 @@ class InputBotItem extends StatefulWidget {
 }
 
 class _InputBotItemState extends State<InputBotItem> {
-  getresponse (String value) {
+  getresponse(String value) {
     if (value.isNotEmpty) {
       return input[value];
     }
   }
+
   addmessage(String value) {
-    widget.chat.messageList.add(
-      Message(
-        text: value, 
-        time: DateTime.now().toString(), 
-        senderNumber: 'user'
-      )
-    );
+    widget.chat.messageList.add(Message(
+        text: value, time: DateTime.now().toString(), senderNumber: 'user'));
     _textEditingController.clear();
     responsemessage(value.toLowerCase());
     widget.function();
   }
+
   responsemessage(String value) {
     final listinput = getresponse(value);
     for (var i = 0; i < listinput.length; i++) {
-      Timer(Duration(seconds: i+5), () => widget.chat.messageList.add(
-      Message(
-        text: listinput[i], 
-        time: DateTime.now().toString(), 
-        senderNumber: 'bot'
-        ),
-      )
-    );
-    Timer(Duration(seconds: i+5), () => widget.function());  
+      Timer(
+          Duration(seconds: i + 5),
+          () => widget.chat.messageList.add(
+                Message(
+                    text: listinput[i],
+                    time: DateTime.now().toString(),
+                    senderNumber: 'bot'),
+              ));
+      Timer(Duration(seconds: i + 5), () => widget.function());
+    }
   }
-}
-
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50.0,
-      child: Row(
-        children: <Widget> [
+        height: 50.0,
+        child: Row(children: <Widget>[
           PopupMenuButton(
             onSelected: (value) {
               if (value == '/help') {
                 addmessage('help');
               }
               if (value == '/settings') {
-                  addmessage('settings');
-              }},   
+                addmessage('settings');
+              }
+            },
             itemBuilder: (context) => [
-                const PopupMenuItem(
-                  value: '/help', 
-                  child: Text('Help')),
-                const PopupMenuItem(
-                  value: '/settings', 
-                  child: Text('Settings')),
+              const PopupMenuItem(value: '/help', child: Text('Help')),
+              const PopupMenuItem(value: '/settings', child: Text('Settings')),
             ],
           ),
           Expanded(
             child: TextField(
               controller: _textEditingController,
               onTap: () {
-                Timer.periodic (
+                Timer.periodic(
                   Duration(milliseconds: 300),
-                  (timer) => _controller.jumpTo(_controller.position.maxScrollExtent),
+                  (timer) =>
+                      _controller.jumpTo(_controller.position.maxScrollExtent),
                 );
               },
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(30.0),
                 ),
-                contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                contentPadding:
+                    EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
                 hintText: 'Message',
               ),
               textInputAction: TextInputAction.send,
-              style: TextStyle (
+              style: TextStyle(
                 fontSize: 16.0,
                 color: Colors.black,
               ),
               onSubmitted: (value) => setState(() {
                 if (value.isNotEmpty) {
                   addmessage(_textEditingController.text.trim());
-                }                
+                }
               }),
             ),
           ),
           Container(
-            width: 50.0,
-            child: InkWell(
-              onTap: () {
-                setState(() {
-                  if (_textEditingController.text.trim().isNotEmpty) {
-                  widget.chat.messageList.add(
-                    Message(
-                      text: _textEditingController.text.trim(), 
-                      time: DateTime.now().toString(), 
-                      senderNumber: 'user'
-                    )
-                  );}
-                _textEditingController.clear();
-                widget.function();                
-                });
-              },
-              child: const Icon(
-                Icons.send,
-                color: CustomColors.kIconColor,
-              )
-            )
-          )
-        ]
-      )
-    );
+              width: 50.0,
+              child: InkWell(
+                  onTap: () {
+                    setState(() {
+                      if (_textEditingController.text.trim().isNotEmpty) {
+                        widget.chat.messageList.add(Message(
+                            text: _textEditingController.text.trim(),
+                            time: DateTime.now().toString(),
+                            senderNumber: 'user'));
+                      }
+                      _textEditingController.clear();
+                      widget.function();
+                    });
+                  },
+                  child: const Icon(
+                    Icons.send,
+                    color: CustomColors.kIconColor,
+                  )))
+        ]));
   }
 }

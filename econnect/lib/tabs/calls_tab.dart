@@ -18,28 +18,29 @@ class CallTab extends StatelessWidget {
       ),
       body: ListTile(
         leading: CircleAvatar(
-            radius: 25,
-            backgroundImage: AssetImage('images/person3.jpg'),
+          radius: 25,
+          backgroundImage: AssetImage('images/person3.jpg'),
+        ),
+        title: Text(
+          'Bob',
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
+        ),
+        subtitle: Container(
+          margin: EdgeInsets.only(top: 5.0),
+          child: Text(
+            DateTime.now().toString(),
+            style: TextStyle(fontSize: 13.0),
           ),
-            title: Text(
-              'Bob',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),),        
-            subtitle: Container(
-            margin: EdgeInsets.only(top: 5.0),
-            child: Text(
-              DateTime.now().toString(),
-              style: TextStyle(fontSize: 13.0),
-              ),
+        ),
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => DetailCallScreen(),
             ),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => DetailCallScreen(),
-                ),
-              );
-            },
-          ),
+          );
+        },
+      ),
     );
   }
 }
@@ -51,68 +52,62 @@ class DetailCallScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // Use the Todo to create the UI.
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Call info'),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.chat),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: Icon(Icons.more_vert),
-            onPressed: () {},
-          ),
-        ],
-<<<<<<< HEAD
-      ),
-      body: Stack(children: <Widget>[
-        Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('images/background.png'),
-              fit: BoxFit.cover,
+        appBar: AppBar(
+          title: Text('Call info'),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.chat),
+              onPressed: () {},
             ),
-=======
+            IconButton(
+              icon: Icon(Icons.more_vert),
+              onPressed: () {},
+            ),
+          ],
         ),
-        body: ListView(
-      children: <Widget>[
-        ListTile(
-          contentPadding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
-          leading: CircleAvatar(
-            radius: 30.0,
-            backgroundImage: const Image(
-              image: AssetImage('./images/person3.jpg'),
-            ).image,
->>>>>>> c42f7202d099ace131cae6b2d2e3f05a5077f003
-          ),
-          title: const Text(
-            'Bob',
-          ),
-          trailing: Wrap(
-            children: <Widget>[
-              IconButton(
-                icon: Icon(Icons.call),
-                onPressed: () {
-                  //Callingscreen();
-                },
+        body: ListView(children: <Widget>[
+          ListTile(
+              contentPadding:
+                  const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
+              leading: CircleAvatar(
+                radius: 30.0,
+                backgroundImage: const Image(
+                  image: AssetImage('./images/person3.jpg'),
+                ).image,
               ),
-              IconButton(
-                icon: Icon(Icons.videocam),
-                onPressed: () {
-                  //VideoCallingScreen();
-                },
+              title: const Text(
+                'Bob',
               ),
-            ],
-          )
-        ),
-        ListTile(
-          leading: Icon(Icons.call_made, color: Colors.green,),
-          title: const Text('Outgoing'),
-          subtitle: Text(DateTime.now().toString()),
-          trailing: const Text('Not answered', style: TextStyle(fontWeight: FontWeight.w500, color: Color.fromARGB(255, 125, 125, 125)),), 
-        ),
-      ]
-    )
-    );
+              trailing: Wrap(
+                children: <Widget>[
+                  IconButton(
+                    icon: Icon(Icons.call),
+                    onPressed: () {
+                      //Callingscreen();
+                    },
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.videocam),
+                    onPressed: () {
+                      //VideoCallingScreen();
+                    },
+                  ),
+                ],
+              )),
+          ListTile(
+            leading: Icon(
+              Icons.call_made,
+              color: Colors.green,
+            ),
+            title: const Text('Outgoing'),
+            subtitle: Text(DateTime.now().toString()),
+            trailing: const Text(
+              'Not answered',
+              style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  color: Color.fromARGB(255, 125, 125, 125)),
+            ),
+          ),
+        ]));
   }
 }
