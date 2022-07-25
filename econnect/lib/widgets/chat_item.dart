@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import '../constants.dart';
+import '../data/selectors.dart';
 import '../model/chat.dart';
 import '../model/message.dart';
 
@@ -163,6 +164,37 @@ class InputBotItem extends StatefulWidget {
 }
 
 class _InputBotItemState extends State<InputBotItem> {
+  getresponse (String value) {
+    if (value.isNotEmpty) {
+      return input[value];
+    }
+  }
+  addmessage(String value) {
+    widget.chat.messageList.add(
+      Message(
+        text: value, 
+        time: DateTime.now().toString(), 
+        senderNumber: 'user'
+      )
+    );
+    _textEditingController.clear();
+    responsemessage(value.toLowerCase());
+    widget.function();
+  }
+  responsemessage(String value) {
+    final listinput = getresponse(value);
+    for (var i = 0; i < listinput.length; i++) {
+      Timer(Duration(seconds: i+5), () => widget.chat.messageList.add(
+      Message(
+        text: listinput[i], 
+        time: DateTime.now().toString(), 
+        senderNumber: 'bot'
+        ),
+      )
+    );
+    Timer(Duration(seconds: i+5), () => widget.function());  
+  }
+}
 
 
   @override
@@ -173,43 +205,13 @@ class _InputBotItemState extends State<InputBotItem> {
         children: <Widget> [
           PopupMenuButton(
             onSelected: (value) {
-              if (value == '/preferences') {
-                widget.chat.messageList.add(
-                  Message(
-                    text: '/preferences', 
-                    time: DateTime.now().toString(), 
-                    senderNumber: 'user'
-                  )
-                );
-                _textEditingController.clear();
-                widget.function();
-              }
               if (value == '/help') {
-                widget.chat.messageList.add(
-                  Message(
-                    text: '/help', 
-                    time: DateTime.now().toString(), 
-                    senderNumber: 'user'
-                  )
-                );
-                _textEditingController.clear();
-                widget.function();
+                addmessage('help');
               }
               if (value == '/settings') {
-                widget.chat.messageList.add(
-                  Message(
-                    text: '/settings', 
-                    time: DateTime.now().toString(), 
-                    senderNumber: 'user'
-                  )
-                );
-                _textEditingController.clear();
-                widget.function();
+                  addmessage('settings');
               }},   
             itemBuilder: (context) => [
-                const PopupMenuItem(
-                  value: '/preferences', 
-                  child: Text('Preferences')),
                 const PopupMenuItem(
                   value: '/help', 
                   child: Text('Help')),
@@ -222,9 +224,9 @@ class _InputBotItemState extends State<InputBotItem> {
             child: TextField(
               controller: _textEditingController,
               onTap: () {
-                Timer (
+                Timer.periodic (
                   Duration(milliseconds: 300),
-                  () => _controller.jumpTo(_controller.position.maxScrollExtent),
+                  (timer) => _controller.jumpTo(_controller.position.maxScrollExtent),
                 );
               },
               decoration: InputDecoration(
@@ -241,15 +243,7 @@ class _InputBotItemState extends State<InputBotItem> {
               ),
               onSubmitted: (value) => setState(() {
                 if (value.isNotEmpty) {
-                  widget.chat.messageList.add(
-                    Message(
-                      text: value, 
-                      time: DateTime.now().toString(), 
-                      senderNumber: 'user'
-                    )
-                  );
-                _textEditingController.clear();
-                widget.function();
+                  addmessage(_textEditingController.text.trim());
                 }                
               }),
             ),

@@ -74,12 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: StatusTab(),
           ),
           Center(
-            child: CallTab(
-              todos: List.generate(2,(i) => CallItem(
-              'Todo $i',
-              'A description of what needs to be done for Todo $i',
-              ),),
-            ),
+            child: CallTab(),
           ),
         ]),
         ),      

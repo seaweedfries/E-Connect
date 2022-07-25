@@ -67,12 +67,7 @@ class _NewHomeScreenState extends State<NewHomeScreen> {
               )
           ),
           Center(
-            child: CallTab(
-              todos: List.generate(2,(i) => CallItem(
-              'Contact $i',
-              'A description of what needs to be done for Todo $i',
-              ),),
-            ),
+            child: CallTab(),
           ),
         ]),
         ),      
