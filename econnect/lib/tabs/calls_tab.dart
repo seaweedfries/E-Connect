@@ -94,9 +94,6 @@ class DetailCallScreen extends StatelessWidget {
                   //Callingscreen();
                 },
               ),
-              title: const Text(
-                'Bob',
-              ),
             ],
           )
         ),
