@@ -22,19 +22,21 @@ class ChatTab extends StatelessWidget {
         itemBuilder: (context, index) {
           return ListTile(
             leading: CircleAvatar(
-            radius: 25,
-            backgroundImage: AssetImage(chats[index].pic),
+              radius: 25,
+              backgroundImage: AssetImage(chats[index].pic),
             ),
             title: Text(
               chats[index].name,
               overflow: TextOverflow.ellipsis,
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),),        
+              style:
+                  const TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
+            ),
             subtitle: Container(
-            margin: const EdgeInsets.only(top: 5.0),
-            child: Text(
-              chats[index].messageList.last.text,
-              overflow: TextOverflow.ellipsis,
-              style: const TextStyle(fontSize: 13.0),
+              margin: const EdgeInsets.only(top: 5.0),
+              child: Text(
+                chats[index].messageList.last.text,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(fontSize: 13.0),
               ),
             ),
             trailing: Text(
@@ -45,18 +47,19 @@ class ChatTab extends StatelessWidget {
             onTap: () {
               if (chats[index].name == 'Helpbot') {
                 Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => DetailBotScreen(chat: chats[index]),
-                ),
-              );
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DetailBotScreen(chat: chats[index]),
+                  ),
+                );
               } else {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => DetailChatScreen(chat: chats[index]),
-                ),
-              );}
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DetailChatScreen(chat: chats[index]),
+                  ),
+                );
+              }
             },
           );
         },
@@ -77,6 +80,7 @@ class _DetailChatScreenState extends State<DetailChatScreen> {
   void refreshParent() {
     setState(() {});
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -107,22 +111,21 @@ class _DetailChatScreenState extends State<DetailChatScreen> {
             onPressed: () {},
           ),
         ],
-        ),
-        body: Stack(
-          children: <Widget> [
-            Container(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('images/background.jpg'),
-                  fit: BoxFit.cover,
-                ),
-              ),
-              padding: const EdgeInsets.all(16.0),
-              child: ChatItem(chat: widget.chat),
-            ),
-          ]
       ),
-      bottomNavigationBar: InputItem(chat: widget.chat,function: refreshParent),
+      body: Stack(children: <Widget>[
+        Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('../../assets/images/background.jpg'),
+              fit: BoxFit.cover,
+            ),
+          ),
+          padding: const EdgeInsets.all(16.0),
+          child: ChatItem(chat: widget.chat),
+        ),
+      ]),
+      bottomNavigationBar:
+          InputItem(chat: widget.chat, function: refreshParent),
     );
   }
 }
@@ -139,6 +142,7 @@ class _DetailBotScreenState extends State<DetailBotScreen> {
   void refreshParent() {
     setState(() {});
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -169,22 +173,21 @@ class _DetailBotScreenState extends State<DetailBotScreen> {
             onPressed: () {},
           ),
         ],
-        ),
-        body: Stack(
-          children: <Widget> [
-            Container(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('images/background.jpg'),
-                  fit: BoxFit.cover,
-                ),
-              ),
-              padding: const EdgeInsets.all(16.0),
-              child: ChatItem(chat: widget.chat),
-            ),
-          ]
       ),
-      bottomNavigationBar: InputBotItem(chat: widget.chat,function: refreshParent),
+      body: Stack(children: <Widget>[
+        Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('../../assets/images/background.jpg'),
+              fit: BoxFit.cover,
+            ),
+          ),
+          padding: const EdgeInsets.all(16.0),
+          child: ChatItem(chat: widget.chat),
+        ),
+      ]),
+      bottomNavigationBar:
+          InputBotItem(chat: widget.chat, function: refreshParent),
     );
   }
 }
