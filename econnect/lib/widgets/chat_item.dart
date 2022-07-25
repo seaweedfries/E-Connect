@@ -244,7 +244,11 @@ class _InputBotItemState extends State<InputBotItem> {
               onSubmitted: (value) => setState(() {
                 if (value.isNotEmpty) {
                   addmessage(_textEditingController.text.trim());
-                }                
+                }
+                Timer(
+                  Duration(seconds: 5),
+                  () => responsemessage('recommendations'),
+                );               
               }),
             ),
           ),

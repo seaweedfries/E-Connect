@@ -63,7 +63,6 @@ class DetailCallScreen extends StatelessWidget {
             onPressed: () {},
           ),
         ],
-<<<<<<< HEAD
       ),
       body: Stack(children: <Widget>[
         Container(
@@ -72,9 +71,8 @@ class DetailCallScreen extends StatelessWidget {
               image: AssetImage('images/background.png'),
               fit: BoxFit.cover,
             ),
-=======
-        ),
-        body: ListView(
+          ),
+        child: ListView(
       children: <Widget>[
         ListTile(
           contentPadding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
@@ -83,7 +81,6 @@ class DetailCallScreen extends StatelessWidget {
             backgroundImage: const Image(
               image: AssetImage('./images/person3.jpg'),
             ).image,
->>>>>>> c42f7202d099ace131cae6b2d2e3f05a5077f003
           ),
           title: const Text(
             'Bob',
@@ -113,6 +110,6 @@ class DetailCallScreen extends StatelessWidget {
         ),
       ]
     )
-    );
+    )]));
   }
 }
