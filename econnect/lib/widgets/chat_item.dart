@@ -172,7 +172,7 @@ class _InputBotItemState extends State<InputBotItem> {
     widget.function();
   }
 
-  responsemessage(String value) {
+  responsemessage(String value) async {
     // final listinput = getresponse(value);
     // for (var i = 0; i < listinput.length; i++) {
     //   Timer(
@@ -183,18 +183,21 @@ class _InputBotItemState extends State<InputBotItem> {
     //                 time: DateTime.now().toString(),
     //                 senderNumber: 'bot'),
     //           ));
-              async {
-                    //async function to perform http get
-
-                    final response = await http.post(
-                        'http://127.0.0.1:5000/'); //getting the response from our backend server script
-
-                    final decoded = json.decode(response.body) as Map<String,
-                        dynamic>;
+    String decoded = '';
+    var response = await http.post(Uri.parse('http://127.0.0.1:5000/'),body: {value});
+    if (response.statusCode == 201) {
+      final String decoded = String.fromJson(jsonDecode(response.body)); 
+    }
+    widget.chat.messageList.add(
+      Message(
+        text: decoded,
+        time: DateTime.now().toString(),
+        senderNumber: 'bot',
+      )
+    );
       // Timer(Duration(seconds: i + 5), () => widget.function());
     }
-  }
-
+    
   @override
   Widget build(BuildContext context) {
     return Container(
