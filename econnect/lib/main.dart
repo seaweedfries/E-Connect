@@ -27,11 +27,11 @@ class MyApp extends StatelessWidget {
         '/settings': (context) => SettingsScreen(),
         '/silverscreen': (context) => SilverScreen(),
         '/loadscreen': (context) => LoadScreen(),
-        '/newhome':(context) => NewHomeScreen(),
-        '/newsilverscreen':(context) => NewSilverScreen(),
-        '/newloadscreen':(context) => NewLoadScreen(),
-        '/newsettings':(context) => NewSettingsScreen(),
+        '/newhome': (context) => NewHomeScreen(),
+        '/newsilverscreen': (context) => NewSilverScreen(),
+        '/newloadscreen': (context) => NewLoadScreen(),
+        '/newsettings': (context) => NewSettingsScreen(),
       },
-      );
+    );
   }
 }

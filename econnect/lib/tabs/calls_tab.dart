@@ -26,17 +26,18 @@ class CallTab extends StatelessWidget {
         itemBuilder: (context, index) {
           return ListTile(
             leading: CircleAvatar(
-            radius: 25,
-            backgroundImage: AssetImage('images/user.jpg'),
-          ),
+              radius: 25,
+              backgroundImage: AssetImage('images/user.jpg'),
+            ),
             title: Text(
               todos[index].title,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),),        
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
+            ),
             subtitle: Container(
-            margin: EdgeInsets.only(top: 5.0),
-            child: Text(
-              'subtitle',
-              style: TextStyle(fontSize: 13.0),
+              margin: EdgeInsets.only(top: 5.0),
+              child: Text(
+                'subtitle',
+                style: TextStyle(fontSize: 13.0),
               ),
             ),
             trailing: Text(
@@ -79,23 +80,21 @@ class DetailCallScreen extends StatelessWidget {
             onPressed: () {},
           ),
         ],
-        ),
-        body: Stack(
-          children: <Widget> [
-            Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('images/background.jpg'),
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(todo.description),
-            ),
-          ]
       ),
+      body: Stack(children: <Widget>[
+        Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('../../assets/images/background.jpg'),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        Container(
+          padding: const EdgeInsets.all(16.0),
+          child: Text(todo.description),
+        ),
+      ]),
     );
   }
 }
