@@ -52,62 +52,62 @@ class DetailCallScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // Use the Todo to create the UI.
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Call info'),
-          actions: [
-            IconButton(
-              icon: Icon(Icons.chat),
-              onPressed: () {},
+      appBar: AppBar(
+        title: Text('Call info'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.chat),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: Icon(Icons.more_vert),
+            onPressed: () {},
+          ),
+        ],
+      ),
+      body: Stack(children: <Widget>[
+        Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('images/background.png'),
+              fit: BoxFit.cover,
             ),
-            IconButton(
-              icon: Icon(Icons.more_vert),
-              onPressed: () {},
-            ),
-          ],
-        ),
-        body: ListView(children: <Widget>[
-          ListTile(
-              contentPadding:
-                  const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
-              leading: CircleAvatar(
-                radius: 30.0,
-                backgroundImage: const Image(
-                  image: AssetImage('./images/person3.jpg'),
-                ).image,
+          ),
+        child: ListView(
+      children: <Widget>[
+        ListTile(
+          contentPadding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
+          leading: CircleAvatar(
+            radius: 30.0,
+            backgroundImage: const Image(
+              image: AssetImage('./images/person3.jpg'),
+            ).image,
+          ),
+          title: const Text(
+            'Bob',
+          ),
+          trailing: Wrap(
+            children: <Widget>[
+              IconButton(
+                icon: Icon(Icons.call),
+                onPressed: () {
+                  //Callingscreen();
+                },
               ),
               title: const Text(
                 'Bob',
               ),
-              trailing: Wrap(
-                children: <Widget>[
-                  IconButton(
-                    icon: Icon(Icons.call),
-                    onPressed: () {
-                      //Callingscreen();
-                    },
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.videocam),
-                    onPressed: () {
-                      //VideoCallingScreen();
-                    },
-                  ),
-                ],
-              )),
-          ListTile(
-            leading: Icon(
-              Icons.call_made,
-              color: Colors.green,
-            ),
-            title: const Text('Outgoing'),
-            subtitle: Text(DateTime.now().toString()),
-            trailing: const Text(
-              'Not answered',
-              style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  color: Color.fromARGB(255, 125, 125, 125)),
-            ),
-          ),
-        ]));
+            ],
+          )
+        ),
+        ListTile(
+          leading: Icon(Icons.call_made, color: Colors.green,),
+          title: const Text('Outgoing'),
+          subtitle: Text(DateTime.now().toString()),
+          trailing: const Text('Not answered', style: TextStyle(fontWeight: FontWeight.w500, color: Color.fromARGB(255, 125, 125, 125)),), 
+        ),
+      ]
+    )
+    )]));
   }
 }

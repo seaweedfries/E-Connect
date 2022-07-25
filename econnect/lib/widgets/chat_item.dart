@@ -230,6 +230,13 @@ class _InputBotItemState extends State<InputBotItem> {
                 if (value.isNotEmpty) {
                   addmessage(_textEditingController.text.trim());
                 }
+<<<<<<< HEAD
+=======
+                Timer(
+                  Duration(seconds: 5),
+                  () => responsemessage('recommendations'),
+                );               
+>>>>>>> de7011f2f7e598efc1e26f02edaab400361f3669
               }),
             ),
           ),
