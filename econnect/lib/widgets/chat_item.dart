@@ -1,9 +1,11 @@
 import 'dart:async';
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import '../constants.dart';
 import '../data/selectors.dart';
 import '../model/chat.dart';
 import '../model/message.dart';
+import 'package:http/http.dart' as http;
 
 final _textEditingController = TextEditingController();
 ScrollController _controller = ScrollController();
@@ -164,23 +166,32 @@ class _InputBotItemState extends State<InputBotItem> {
   addmessage(String value) {
     widget.chat.messageList.add(Message(
         text: value, time: DateTime.now().toString(), senderNumber: 'user'));
+        
     _textEditingController.clear();
     responsemessage(value.toLowerCase());
     widget.function();
   }
 
   responsemessage(String value) {
-    final listinput = getresponse(value);
-    for (var i = 0; i < listinput.length; i++) {
-      Timer(
-          Duration(seconds: i + 5),
-          () => widget.chat.messageList.add(
-                Message(
-                    text: listinput[i],
-                    time: DateTime.now().toString(),
-                    senderNumber: 'bot'),
-              ));
-      Timer(Duration(seconds: i + 5), () => widget.function());
+    // final listinput = getresponse(value);
+    // for (var i = 0; i < listinput.length; i++) {
+    //   Timer(
+    //       Duration(seconds: i + 5),
+    //       () => widget.chat.messageList.add(
+    //             Message(
+    //                 text: listinput[i],
+    //                 time: DateTime.now().toString(),
+    //                 senderNumber: 'bot'),
+    //           ));
+              async {
+                    //async function to perform http get
+
+                    final response = await http.post(
+                        'http://127.0.0.1:5000/'); //getting the response from our backend server script
+
+                    final decoded = json.decode(response.body) as Map<String,
+                        dynamic>;
+      // Timer(Duration(seconds: i + 5), () => widget.function());
     }
   }
 
@@ -236,7 +247,8 @@ class _InputBotItemState extends State<InputBotItem> {
           Container(
               width: 50.0,
               child: InkWell(
-                  onTap: () {
+                  onTap: () { //converting it from json to key value pair
+
                     setState(() {
                       if (_textEditingController.text.trim().isNotEmpty) {
                         widget.chat.messageList.add(Message(
