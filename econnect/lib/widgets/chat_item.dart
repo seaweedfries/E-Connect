@@ -184,10 +184,11 @@ class _InputBotItemState extends State<InputBotItem> {
     //                 senderNumber: 'bot'),
     //           ));
     var decoded = '';
-    var response = await http.post(Uri.parse('http://127.0.0.1:5000/'),body: {value});
+    var response = await http.get(Uri.parse('http://127.0.0.1:5000/get?msg=$value'));
     if (response.statusCode == 201) {
-      var decoded = jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>; 
+      var decoded = msg.fromJson(jsonDecode(response.body));
     }
+    debugPrint("sent request to server");
     if (decoded.isNotEmpty) {
     widget.chat.messageList.add(
       Message(
@@ -196,6 +197,7 @@ class _InputBotItemState extends State<InputBotItem> {
         senderNumber: 'bot',
       )
     );
+    debugPrint("updated chat");
     Timer(Duration(seconds: 5), () => widget.function()); }
     }
     
@@ -269,5 +271,19 @@ class _InputBotItemState extends State<InputBotItem> {
                     color: CustomColors.kIconColor,
                   )))
         ]));
+  }
+}
+
+class msg {
+  final String msgcontent;
+
+  const msg({
+    required this.msgcontent,
+  });
+
+  factory msg.fromJson(Map<String, dynamic> json) {
+    return msg(
+      msgcontent: json['msgcontent'],
+    );
   }
 }
