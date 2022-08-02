@@ -38110,7 +38110,7 @@ this.a.pS()},
 vG(a){var s=0,r=A.a5(t.N),q,p=this,o,n
 var $async$vG=A.a6(function(b,c){if(b===1)return A.a2(c,r)
 while(true)switch(s){case 0:s=3
-return A.a7(A.aCH(A.te("http://econnect.herokuapp.com/get?msg="+a)),$async$vG)
+return A.a7(A.aCH(A.te("http://hci-econnect.herokuapp.com/get?msg="+a)),$async$vG)
 case 3:o=c
 n=A.aCt(A.aAH(o.e).c.a.h(0,"charset")).d5(0,o.w)
 p.a.d.c.push(new A.jQ(n,new A.cz(Date.now(),!1).i(0),"bot"))
