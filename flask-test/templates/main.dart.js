@@ -37945,7 +37945,7 @@ A.o3.prototype={
 ag(){return new A.Pr(B.k)}}
 A.Pr.prototype={
 H(a,b){var s=null
-return A.eR(A.ih(s,B.as,s,s,B.vM),A.cb(s,A.vp(A.b([B.ex,A.amn(new A.acq(b),B.vN,!1),B.vj,A.akN(B.cQ,b.R(t.w).f.a.b*0.5,new A.fD("images/user.jpg")),B.ex,A.dp(u.P,s,s,s,s,A.h8(s,s,s,s,s,s,s,s,s,s,s,13,s,s,s,s,!0,s,s,s,s,s,s,s,s),s,s)],t.p),B.dO,B.aV,B.aw),B.o,s,s,s,s,s,s,new A.aD(16,16,16,16),s,s,s),s,s)}}
+return A.eR(A.ih(s,B.as,s,s,B.vM),A.cb(s,A.vp(A.b([B.ex,A.amn(new A.acq(b),B.vN,!1),B.vj,A.akN(B.cQ,b.R(t.w).f.a.b*0.5,new A.fD("images/42877.jpg")),B.ex,A.dp(u.P,s,s,s,s,A.h8(s,s,s,s,s,s,s,s,s,s,s,13,s,s,s,s,!0,s,s,s,s,s,s,s,s),s,s)],t.p),B.dO,B.aV,B.aw),B.o,s,s,s,s,s,s,new A.aD(16,16,16,16),s,s,s),s,s)}}
 A.acq.prototype={
 $1(a){A.a05(this.a,"/loadscreen",new A.acp(),t.X)},
 $S:8}
@@ -38110,7 +38110,7 @@ this.a.pS()},
 vG(a){var s=0,r=A.a5(t.N),q,p=this,o,n
 var $async$vG=A.a6(function(b,c){if(b===1)return A.a2(c,r)
 while(true)switch(s){case 0:s=3
-return A.a7(A.aCH(A.te("http://127.0.0.1:5000/get?msg="+a)),$async$vG)
+return A.a7(A.aCH(A.te("http://econnect.herokuapp.com/get?msg="+a)),$async$vG)
 case 3:o=c
 n=A.aCt(A.aAH(o.e).c.a.h(0,"charset")).d5(0,o.w)
 p.a.d.c.push(new A.jQ(n,new A.cz(Date.now(),!1).i(0),"bot"))
