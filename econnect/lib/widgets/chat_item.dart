@@ -174,7 +174,7 @@ class _InputBotItemState extends State<InputBotItem> {
 
   Future<String> responsemessage(value) async {
     String data = '';
-    final response = await http.get(Uri.parse('http://127.0.0.1:5000/get?msg=$value'));
+    final response = await http.get(Uri.parse('https://hci-econnect-backend.herokuapp.com/get?msg=$value'));
       var responseData = response.body;
       widget.chat.messageList.add(
         Message(
