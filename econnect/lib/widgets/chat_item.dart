@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import '../constants.dart';
 import '../data/selectors.dart';
+import '../globals.dart';
 import '../model/chat.dart';
 import '../model/message.dart';
 import 'package:http/http.dart' as http;
@@ -59,13 +60,13 @@ class ChatMessageWidget extends StatelessWidget {
         children: [
           Container(
             padding: EdgeInsets.all(10.0),
-            child: Text(message.text),
             constraints:
                 BoxConstraints.loose(MediaQuery.of(context).size * 0.8),
             decoration: BoxDecoration(
                 color: isMe
                     ? CustomColors.kChatBackgroundColor
                     : CustomColors.kLightColor),
+            child: Text(message.text, style: TextStyle(fontSize: 14.0+fontvaluefactor)),
           ),
         ],
       ),

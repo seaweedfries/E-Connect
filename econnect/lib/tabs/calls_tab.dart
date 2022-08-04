@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../constants.dart';
+import '../globals.dart';
 
 class CallItem {
   const CallItem();
@@ -23,13 +24,13 @@ class CallTab extends StatelessWidget {
         ),
         title: Text(
           'Bob',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0+fontvaluefactor),
         ),
         subtitle: Container(
           margin: EdgeInsets.only(top: 5.0),
           child: Text(
             DateTime.now().toString(),
-            style: TextStyle(fontSize: 13.0),
+            style: TextStyle(fontSize: 13.0+fontvaluefactor),
           ),
         ),
         onTap: () {
@@ -53,7 +54,7 @@ class DetailCallScreen extends StatelessWidget {
     // Use the Todo to create the UI.
     return Scaffold(
       appBar: AppBar(
-        title: Text('Call info'),
+        title: Text('Call info', style: TextStyle(fontSize: 20.0+fontvaluefactor),),
         actions: [
           IconButton(
             icon: Icon(Icons.chat),
@@ -83,8 +84,9 @@ class DetailCallScreen extends StatelessWidget {
               image: AssetImage('./images/person3.jpg'),
             ).image,
           ),
-          title: const Text(
+          title: Text(
             'Bob',
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0+fontvaluefactor),
           ),
           trailing: Wrap(
             children: <Widget>[
@@ -99,9 +101,9 @@ class DetailCallScreen extends StatelessWidget {
         ),
         ListTile(
           leading: Icon(Icons.call_made, color: Colors.green,),
-          title: const Text('Outgoing'),
+          title: Text('Outgoing', style: TextStyle(fontSize: 14.0+fontvaluefactor),),
           subtitle: Text(DateTime.now().toString()),
-          trailing: const Text('Not answered', style: TextStyle(fontWeight: FontWeight.w500, color: Color.fromARGB(255, 125, 125, 125)),), 
+          trailing: Text('Not answered', style: TextStyle(fontSize: 14.0+fontvaluefactor,fontWeight: FontWeight.w500, color: Color.fromARGB(255, 125, 125, 125)),), 
         ),
       ]
     )

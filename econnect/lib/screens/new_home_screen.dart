@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../constants.dart';
+import '../globals.dart';
 import '../tabs/chats_tab.dart';
 import '../tabs/calls_tab.dart';
 import '../data/chats.dart';
@@ -20,7 +21,7 @@ class _NewHomeScreenState extends State<NewHomeScreen> {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: CustomColors.kPrimaryColor,
-          title: const Text('Whatsapp: Silver Mode'),
+          title: const Text('Whatsapp: Silver Mode', style: TextStyle(fontSize: 20.0)),
           actions: [
             IconButton(
               icon: const Icon(Icons.search),
@@ -32,32 +33,32 @@ class _NewHomeScreenState extends State<NewHomeScreen> {
                     Navigator.pushNamed(context, '/newsettings');
                   }},
               itemBuilder: (context) => [
-                const PopupMenuItem(
+                PopupMenuItem(
                   value: 1, 
-                  child: Text('New group')),
-                const PopupMenuItem(
+                  child: Text('New group', style: TextStyle(fontSize: 14.0+fontvaluefactor),)),
+                PopupMenuItem(
                   value: 2, 
-                  child: Text('New broadcast')),
-                const PopupMenuItem(
+                  child: Text('New broadcast', style: TextStyle(fontSize: 14.0+fontvaluefactor))),
+                PopupMenuItem(
                   value: 3, 
-                  child: Text('Linked devices')),
-                const PopupMenuItem(
+                  child: Text('Linked devices', style: TextStyle(fontSize: 14.0+fontvaluefactor))),
+                PopupMenuItem(
                   value: 4, 
-                  child: Text('Starred messages')),
-                const PopupMenuItem(
+                  child: Text('Starred messages', style: TextStyle(fontSize: 14.0+fontvaluefactor))),
+                PopupMenuItem(
                   value: 'settings', 
-                  child: Text('Settings')),
+                  child: Text('Settings', style: TextStyle(fontSize: 14.0+fontvaluefactor))),
               ]),
             const SizedBox(width: 10),
           ],
-          bottom: const TabBar(
+          bottom: TabBar(
             indicatorColor: CustomColors.kLightColor,
             tabs:[
               Tab(
                 child: Text('Chats',
-                style: CustomTextStyle.tabBarTextStyle,),),
+                style: TextStyle(fontSize: 18+fontvaluefactor)),),
               Tab(child: Text('Calls',
-                  style: CustomTextStyle.tabBarTextStyle,),),
+                  style: TextStyle(fontSize: 18+fontvaluefactor)),),
           ])
         ),
         body: TabBarView(children: [

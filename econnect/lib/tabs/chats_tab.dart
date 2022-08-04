@@ -1,6 +1,7 @@
 import 'package:econnect/constants.dart';
 import 'package:econnect/data/chats.dart';
 import 'package:flutter/material.dart';
+import '../globals.dart';
 import '../model/chat.dart';
 import '../widgets/chat_item.dart';
 
@@ -28,21 +29,20 @@ class ChatTab extends StatelessWidget {
             title: Text(
               chats[index].name,
               overflow: TextOverflow.ellipsis,
-              style:
-                  const TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
+              style:TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0+fontvaluefactor),
             ),
             subtitle: Container(
               margin: const EdgeInsets.only(top: 5.0),
               child: Text(
                 chats[index].messageList.last.text,
                 overflow: TextOverflow.ellipsis,
-                style: const TextStyle(fontSize: 13.0),
+                style: TextStyle(fontSize: 13.0+fontvaluefactor),
               ),
             ),
             trailing: Text(
               chats[index].messageList.last.time,
               overflow: TextOverflow.ellipsis,
-              style: const TextStyle(fontSize: 10.0, color: Colors.grey),
+              style: TextStyle(fontSize: 10.0+fontvaluefactor, color: Colors.grey),
             ),
             onTap: () {
               if (chats[index].name == 'Helpbot') {
@@ -96,7 +96,7 @@ class _DetailChatScreenState extends State<DetailChatScreen> {
             ),
           ],
         ),
-        title: Text(widget.chat.name),
+        title: Text(widget.chat.name, style: TextStyle(fontSize: 20.0+fontvaluefactor)),
         actions: [
           IconButton(
             icon: const Icon(Icons.video_call),

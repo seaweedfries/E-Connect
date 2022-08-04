@@ -1,3 +1,4 @@
+import 'package:econnect/screens/font_size.dart';
 import 'package:econnect/screens/home_screen.dart';
 import 'package:econnect/screens/new_home_screen.dart';
 import 'package:econnect/screens/new_load_screen.dart';
@@ -6,12 +7,11 @@ import 'package:econnect/screens/new_silver_screen.dart';
 import 'package:econnect/screens/settings_screen.dart';
 import 'package:econnect/screens/load_screen.dart';
 import 'package:econnect/screens/silver_screen.dart';
-
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+import 'globals.dart';
 
 void main() {
+  fontvaluefactor = 0.0;
   runApp(MyApp());
 }
 
@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
         '/newsilverscreen': (context) => NewSilverScreen(),
         '/newloadscreen': (context) => NewLoadScreen(),
         '/newsettings': (context) => NewSettingsScreen(),
+        '/fontsize': (context) => FontSize(),
       },
     );
   }

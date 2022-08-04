@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
+import '../globals.dart';
 
 class StatusTab extends StatefulWidget {
   const StatusTab({Key? key}) : super(key: key);
@@ -35,30 +36,30 @@ class _StatusTabState extends State<StatusTab> {
               )]
             )
           ),
-          title: const Text(
+          title: Text(
             'My status',
-            style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w500),
+            style: TextStyle(fontSize: 18.0+fontvaluefactor, fontWeight: FontWeight.w500),
           ),
-          subtitle: const Text(
+          subtitle: Text(
             'Tap to add status update',
-            style: TextStyle(fontSize: 13.0),
+            style: TextStyle(fontSize: 13.0+fontvaluefactor),
           ),
           onTap: () {},
         ),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.0),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Text(
             'Recent updates', 
-            style: TextStyle(fontWeight: FontWeight.w700, color: Color.fromARGB(255, 125, 125, 125)),
+            style: TextStyle(fontSize: 14.0+fontvaluefactor,fontWeight: FontWeight.w700, color: const Color.fromARGB(255, 125, 125, 125)),
             ),
         ),
 
-        const ListTile(
-          contentPadding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
-          leading: Icon(Icons.brightness_1_outlined, size: 60.0, color: CustomColors.kPrimaryColor,),
+        ListTile(
+          contentPadding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
+          leading: const Icon(Icons.brightness_1_outlined, size: 60.0, color: CustomColors.kPrimaryColor,),
           title: Text(
             'Whatsapp',
-            style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.w500, color: CustomColors.kPrimaryColor),
+            style: TextStyle(fontSize: 15.0+fontvaluefactor, fontWeight: FontWeight.w500, color: CustomColors.kPrimaryColor),
           ),
         )
       ]

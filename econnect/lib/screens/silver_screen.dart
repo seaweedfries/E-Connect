@@ -32,14 +32,6 @@ class _SilverScreenState extends State<SilverScreen> {
                         context, '/loadscreen', (_) => false);
                   },
                 ),
-                const SizedBox(height: 25.0),
-                Image(
-                  image: AssetImage(
-                    'assets/images/user.jpg',
-                  ),
-                  fit: BoxFit.cover,
-                  height: MediaQuery.of(context).size.height * 0.5,
-                ),
                 const SizedBox(height: 16.0),
                 Text(
                   'Silver Mode is an experimental feature that allows you to use a more simplified version of the app and interact with a built-in helpbot.',

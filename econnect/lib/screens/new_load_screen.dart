@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 
 import '../constants.dart';
+import '../globals.dart';
 
 class NewLoadScreen extends StatefulWidget {
   const NewLoadScreen({Key? key}) : super(key: key);
@@ -13,6 +14,7 @@ class NewLoadScreen extends StatefulWidget {
 class _NewLoadScreenState extends State<NewLoadScreen> {
   @override
   Widget build(BuildContext context) {
+    fontvaluefactor = 0.0;
     Timer(
       const Duration(seconds: 3),
       () => Navigator.pushNamedAndRemoveUntil(context, '/', (_) => false), 

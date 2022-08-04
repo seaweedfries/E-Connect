@@ -1,3 +1,4 @@
+import 'package:econnect/globals.dart';
 import 'package:flutter/material.dart';
 import 'package:econnect/constants.dart';
 import 'package:econnect/widgets/setting_item.dart';
@@ -15,7 +16,7 @@ class _NewSettingsScreenState extends State<NewSettingsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Settings'),
+        title: Text('Settings', style: TextStyle(fontSize: 20.0+fontvaluefactor)),
         backgroundColor: CustomColors.kPrimaryColor,
       ),
       body: ListView(
@@ -31,16 +32,22 @@ class _NewSettingsScreenState extends State<NewSettingsScreen> {
                 ).image,
               ),
             ),
-            title: const Text(
+            title: Text(
               'carbohydrate',
-              style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500),
+              style: TextStyle(fontSize: 20.0+fontvaluefactor, fontWeight: FontWeight.w500),
             ),
-            subtitle: const Text(
+            subtitle: Text(
               'hehe hci',
-              style: TextStyle(fontSize: 13.0),
+              style: TextStyle(fontSize: 13.0+fontvaluefactor),
             ),
           ),
           const Divider(height: 0.0,),
+          SettingItem(
+            icon: Icons.font_download,
+            title: 'Font Size',
+            subtitle: 'Adjust to your preference',
+            onTapp: '/fontsize',
+          ),
           SettingItem(
             icon: Icons.vpn_key,
             title: 'Account',
