@@ -15,6 +15,13 @@ final Map<String, List<String>> input = {
     'After that, you can choose who you want to message'
         'And click on the contact history to send him/her message,'
   ],
+  'message': [
+    'Sure, I can explain step by step!',
+    'First, go back to the main page by clicking on the arrow at the top left of the page',
+    'Then click on the "Chats" tab to go to the Messages section.',
+    'After that, you can choose who you want to message'
+        'And click on the contact history to send him/her message,'
+  ],
 
   '打电话': [
     '确定，我可以解释步骤！',
@@ -43,6 +50,26 @@ final Map<String, List<String>> input = {
   ],
   'turn off': ['You can turn me on by telling me "Turn on". Goodbye!'],
 
+  'font': [
+    'First, go back to the main page by clicking on the arrow at the top left of the page',
+    'Then click on the 3 vertical dots button at the top right corner to go to the Settings section.',
+    'After that, press Font Size button and hold down on the circle to slide it right to increase size.',
+    'Or press Font Size button and hold down on the circle to slide it left to decrease size.',
+    'https://hci-econnect-frontend.herokuapp.com/#/fontsize'
+  ],
+
+  'size': [
+    'First, go back to the main page by clicking on the arrow at the top left of the page',
+    'Then click on the 3 vertical dots button at the top right corner to go to the Settings section.',
+    'After that, press Font Size button and hold down on the circle to slide it right to increase size.',
+    'Or press Font Size button and hold down on the circle to slide it left to decrease size.',
+  ],
+
+  '字体': [
+    '首先，点击页面左上角的箭头，然后点击“设置”选顢卡，',
+    '然后，点击字体大小按钮，按住圆圈，滑动可以放大或缩小字体大小。',
+  ],
+
   //general
   'suggest something': [
     'Based on your past interests with your contacts,',
@@ -51,6 +78,15 @@ final Map<String, List<String>> input = {
     'URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ',
     'Would you like to watch this video?'
   ],
+
+  'what should i do today?': [
+    'Based on your past interests with your contacts,',
+    'Here is a suggested video for you to watch',
+    'Title: How and where to find your thermos bottle',
+    'URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+    'Would you like to watch this video?'
+  ],
+
   '提出一些建议': [
     '根据你与你的联系人的历史兴趣，',
     '这里是一个为你推荐的视频',
@@ -78,13 +114,14 @@ final Map<String, List<String>> input = {
     '链接 : https://www.facebook.com/events/89841008766008/',
     '你想要参加这个活动吗？'
   ],
+
   'charlie': [
     'Charlie is a smart and funny boi',
     'Charlie is fat and has a big heart',
     'Charlie eats more rice than a normal person',
     'Charlie orz a lot',
   ],
-  'ellie' : [
+  'ellie': [
     'Ellie is a smart and funny gurl :DDDDD',
     'Ellie is fat and has a big heart',
     'Ellie eats more rice than a normal person',
