@@ -53,13 +53,13 @@ class ChatMessageWidget extends StatelessWidget {
     bool isMe = message.senderNumber == 'user';
 
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 5.0, horizontal: 5.0),
+      margin: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 5.0),
       child: Row(
         mainAxisAlignment:
             isMe ? MainAxisAlignment.end : MainAxisAlignment.start,
         children: [
           Container(
-            padding: EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(10.0),
             constraints:
                 BoxConstraints.loose(MediaQuery.of(context).size * 0.8),
             decoration: BoxDecoration(
@@ -104,12 +104,12 @@ class _InputItemState extends State<InputItem> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(30.0),
                 ),
-                contentPadding:
-                    EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 20.0, vertical: 10.0),
                 hintText: 'Message',
               ),
               textInputAction: TextInputAction.send,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 16.0,
                 color: Colors.black,
               ),
@@ -158,36 +158,59 @@ class InputBotItem extends StatefulWidget {
 }
 
 class _InputBotItemState extends State<InputBotItem> {
-  getresponse(String value) {
+
+  String getresponse(String value) {
     if (value.isNotEmpty) {
-      return input[value];
+      for (var i = 0; i < input[value]!.length; i++) {
+        Timer(
+          Duration(seconds: i + 5),
+          () => widget.chat.messageList.add(
+                Message(
+                    text: input[value]![i],
+                    time: DateTime.now().toString(),
+                    senderNumber: 'bot'),
+              ));
+      Timer(Duration(seconds: i + 5), () => widget.function());
+      }
+      return 'test';
+    } else {
+      return 'alkhjdfkljsh';
     }
+  }
+
+  Future<String> responsemessage(value) async {
+    String data = '';
+    final response = await http.get(Uri.parse(
+        'https://secret-earth-37320.herokuapp.com/https://my-personal-chatbot.herokuapp.com/get?msg=$value'));
+    var responseData = response.body;
+    widget.chat.messageList.add(
+      Message(
+        text: responseData,
+        time: DateTime.now().toString(),
+        senderNumber: 'bot',
+      ),
+    );
+    widget.function();
+    return data;
   }
 
   addmessage(String value) {
     widget.chat.messageList.add(Message(
         text: value, time: DateTime.now().toString(), senderNumber: 'user'));
-        
+
     _textEditingController.clear();
-    responsemessage(value.toLowerCase());
     widget.function();
+    bool state = false;
+    for (var key in value.split(" ")) {
+      if (input.containsKey(key)) {
+        getresponse(key);
+        state = true;
+      }}
+    if (state == false) {
+        responsemessage(value);
+      }
   }
 
-  Future<String> responsemessage(value) async {
-    String data = '';
-    final response = await http.get(Uri.parse('https://secret-earth-37320.herokuapp.com/https://my-personal-chatbot.herokuapp.com/get?msg=$value'));
-      var responseData = response.body;
-      widget.chat.messageList.add(
-        Message(
-          text: responseData,
-          time: DateTime.now().toString(),
-          senderNumber: 'bot',
-        ),
-      );
-      widget.function();
-    return data;
-  }
-    
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -212,7 +235,7 @@ class _InputBotItemState extends State<InputBotItem> {
               controller: _textEditingController,
               onTap: () {
                 Timer.periodic(
-                  Duration(milliseconds: 300),
+                  const Duration(milliseconds: 300),
                   (timer) =>
                       _controller.jumpTo(_controller.position.maxScrollExtent),
                 );
@@ -221,12 +244,12 @@ class _InputBotItemState extends State<InputBotItem> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(30.0),
                 ),
-                contentPadding:
-                    EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 20.0, vertical: 10.0),
                 hintText: 'Message',
               ),
               textInputAction: TextInputAction.send,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 16.0,
                 color: Colors.black,
               ),
@@ -240,7 +263,8 @@ class _InputBotItemState extends State<InputBotItem> {
           Container(
               width: 50.0,
               child: InkWell(
-                  onTap: () { //converting it from json to key value pair
+                  onTap: () {
+                    //converting it from json to key value pair
 
                     setState(() {
                       if (_textEditingController.text.trim().isNotEmpty) {

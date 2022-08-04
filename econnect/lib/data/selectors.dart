@@ -1,14 +1,14 @@
-final input = {
+final Map<String, List<String>> input = {
   //help function
   'help': ['How can I help?'],
-  'i want to make a call': [
+  'call': [
     'Sure, I can explain step by step!',
     'First, go back to the main page by clicking on the arrow at the top left of the page',
     'Then click on the "Calls" tab to go to the Calls section.',
     'After that, you can either click on the contact history to make a call,',
     'Or click on the floating call button on the bottom right of the screen to look for your contact.'
   ],
-  'i want to send a message': [
+  'send a message': [
     'Sure, I can explain step by step!',
     'First, go back to the main page by clicking on the arrow at the top left of the page',
     'Then click on the "Chats" tab to go to the Messages section.',
@@ -41,7 +41,7 @@ final input = {
     '然后，你可以更改应用的设置。',
     '试着点击银色模式按钮，切换到老人模式。'
   ],
-  'turn off': 'You can turn me on by telling me "Turn on". Goodbye!',
+  'turn off': ['You can turn me on by telling me "Turn on". Goodbye!'],
 
   //general
   'suggest something': [
@@ -77,5 +77,17 @@ final input = {
     '地点 : 塔比森游行',
     '链接 : https://www.facebook.com/events/89841008766008/',
     '你想要参加这个活动吗？'
+  ],
+  'charlie': [
+    'Charlie is a smart and funny boi',
+    'Charlie is fat and has a big heart',
+    'Charlie eats more rice than a normal person',
+    'Charlie orz a lot',
+  ],
+  'ellie' : [
+    'Ellie is a smart and funny gurl :DDDDD',
+    'Ellie is fat and has a big heart',
+    'Ellie eats more rice than a normal person',
+    'Ellie orz a lot',
   ],
 };
