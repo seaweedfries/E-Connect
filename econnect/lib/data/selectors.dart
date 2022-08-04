@@ -1,4 +1,4 @@
-final input = {
+final Map<String, List<String>> input = {
   //help function
   'help': ['How can I help?'],
   'i want to make a call': [
@@ -41,7 +41,7 @@ final input = {
     '然后，你可以更改应用的设置。',
     '试着点击银色模式按钮，切换到老人模式。'
   ],
-  'turn off': 'You can turn me on by telling me "Turn on". Goodbye!',
+  'turn off': ['You can turn me on by telling me "Turn on". Goodbye!'],
 
   //general
   'suggest something': [

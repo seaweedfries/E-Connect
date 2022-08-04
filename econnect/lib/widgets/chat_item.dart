@@ -157,9 +157,19 @@ class InputBotItem extends StatefulWidget {
 }
 
 class _InputBotItemState extends State<InputBotItem> {
-  getresponse(String value) {
+  String getresponse(String value) {
     if (value.isNotEmpty) {
-      return input[value];
+      print(input[value]);
+      for (var i = 0; i < input[value]!.length; i++) {
+        widget.chat.messageList.add(Message(
+            text: input[value]![i],
+            time: DateTime.now().toString(),
+            senderNumber: 'bot'));
+      }
+
+      return 'test';
+    } else {
+      return 'alkhjdfkljsh';
     }
   }
 
