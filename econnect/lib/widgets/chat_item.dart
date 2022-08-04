@@ -66,7 +66,8 @@ class ChatMessageWidget extends StatelessWidget {
                 color: isMe
                     ? CustomColors.kChatBackgroundColor
                     : CustomColors.kLightColor),
-            child: Text(message.text, style: TextStyle(fontSize: 14.0+fontvaluefactor)),
+            child: Text(message.text,
+                style: TextStyle(fontSize: 14.0 + fontvaluefactor)),
           ),
         ],
       ),
@@ -158,19 +159,18 @@ class InputBotItem extends StatefulWidget {
 }
 
 class _InputBotItemState extends State<InputBotItem> {
-
   String getresponse(String value) {
     if (value.isNotEmpty) {
       for (var i = 0; i < input[value]!.length; i++) {
         Timer(
-          Duration(seconds: i + 5),
-          () => widget.chat.messageList.add(
-                Message(
-                    text: input[value]![i],
-                    time: DateTime.now().toString(),
-                    senderNumber: 'bot'),
-              ));
-      Timer(Duration(seconds: i + 5), () => widget.function());
+            Duration(seconds: i + 5),
+            () => widget.chat.messageList.add(
+                  Message(
+                      text: input[value]![i],
+                      time: DateTime.now().toString(),
+                      senderNumber: 'bot'),
+                ));
+        Timer(Duration(seconds: i + 5), () => widget.function());
       }
       return 'test';
     } else {
@@ -205,10 +205,11 @@ class _InputBotItemState extends State<InputBotItem> {
       if (input.containsKey(key)) {
         getresponse(key);
         state = true;
-      }}
-    if (state == false) {
-        responsemessage(value);
       }
+    }
+    if (state == false) {
+      responsemessage(value);
+    }
   }
 
   @override
