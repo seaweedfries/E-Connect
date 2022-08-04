@@ -8,5 +8,6 @@ class Message {
       {required this.text,
       required this.time,
       required this.senderNumber,
-      required TapGestureRecognizer recognizer});
+      //required TapGestureRecognizer recognizer
+      });
 }

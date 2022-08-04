@@ -116,7 +116,8 @@ class _InputItemState extends State<InputItem> {
               ),
               onSubmitted: (value) => setState(() {
                 if (value.isNotEmpty) {
-                  widget.chat.messageList.add(Message(
+                  widget.chat.messageList.add(
+                    Message(
                       text: value,
                       time: DateTime.now().toString(),
                       senderNumber: 'user'));
