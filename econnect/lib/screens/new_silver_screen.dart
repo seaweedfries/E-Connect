@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../constants.dart';
+import '../globals.dart';
 
 
 class NewSilverScreen extends StatefulWidget {
@@ -27,6 +28,7 @@ class _NewSilverScreenState extends State<NewSilverScreen> {
               title: const Text('Enable Silver Mode', style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500)),
               value: true,
               onChanged: (bool value) {
+                clicknumber += 1;
                 Navigator.pushNamedAndRemoveUntil(context, '/newloadscreen', (_) => false);
               },
             ),

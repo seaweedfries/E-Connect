@@ -12,6 +12,7 @@ import 'globals.dart';
 
 void main() {
   fontvaluefactor = 0.0;
+  clicknumber = 0;
   runApp(MyApp());
 }
 
@@ -26,11 +27,11 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       routes: {
-        '/': (context) => HomeScreen(),
+        '/': (context) => NewHomeScreen(),
         '/settings': (context) => SettingsScreen(),
         '/silverscreen': (context) => SilverScreen(),
         '/loadscreen': (context) => LoadScreen(),
-        '/newhome': (context) => NewHomeScreen(),
+        '/home': (context) => HomeScreen(),
         '/newsilverscreen': (context) => NewSilverScreen(),
         '/newloadscreen': (context) => NewLoadScreen(),
         '/newsettings': (context) => NewSettingsScreen(),

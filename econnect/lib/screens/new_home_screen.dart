@@ -26,9 +26,11 @@ class _NewHomeScreenState extends State<NewHomeScreen> {
             IconButton(
               icon: const Icon(Icons.search),
               onPressed: () {
-                setState(() {                });},),
+                clicknumber += 1;
+              },),
             PopupMenuButton(
               onSelected: (value) {
+                clicknumber += 1;
                   if (value == 'settings') {
                     Navigator.pushNamed(context, '/newsettings');
                   }},

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:econnect/constants.dart';
 
+import '../globals.dart';
+
 class SettingItem extends StatelessWidget {
 
   final IconData icon;
@@ -58,7 +60,9 @@ class SettingItem extends StatelessWidget {
       subtitle: Text(
         subtitle!
       ),
-      onTap: onTapp == null ? null : () => Navigator.pushNamed(context, onTapp!),
+      onTap: onTapp == null ? null : () {
+        clicknumber += 1;
+        Navigator.pushNamed(context, onTapp!);},
     );
   }
 

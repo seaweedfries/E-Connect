@@ -15,9 +15,10 @@ class _NewLoadScreenState extends State<NewLoadScreen> {
   @override
   Widget build(BuildContext context) {
     fontvaluefactor = 0.0;
+    clicknumber += 1;
     Timer(
       const Duration(seconds: 3),
-      () => Navigator.pushNamedAndRemoveUntil(context, '/', (_) => false), 
+      () => Navigator.pushNamedAndRemoveUntil(context, '/home', (_) => false), 
     );
     return Scaffold(
       appBar: AppBar(

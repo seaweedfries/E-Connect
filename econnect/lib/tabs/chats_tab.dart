@@ -14,9 +14,33 @@ class ChatTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: CustomColors.kPrimaryColor,
-        child: const Icon(Icons.chat),
+        onPressed: () {
+          showDialog<String>(
+            context: context,
+            builder: (BuildContext context) => AlertDialog(
+            title: const Text('Welcome to E-connect :D'),
+            content: const Text('Press OK to start the test.'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  clicknumber += 1;
+                  Navigator.pop(context, 'Cancel');},
+                child: const Text('Cancel'),
+              ),
+              TextButton(
+                onPressed: () {
+                  clicknumber += 1;
+                  starttime = DateTime.now();
+                  Navigator.pop(context, 'OK');
+                },
+                child: const Text('OK'),
+            ),
+          ],
+        ),
+      );
+        },
+        backgroundColor: Colors.red,
+        child: const Icon(Icons.circle, color: Colors.white),
       ),
       body: ListView.builder(
         itemCount: chats.length,
@@ -91,6 +115,7 @@ class _DetailChatScreenState extends State<DetailChatScreen> {
             IconButton(
               icon: const Icon(Icons.arrow_back, size: 20),
               onPressed: () {
+                clicknumber += 1;
                 Navigator.pop(context);
               },
             ),
@@ -100,15 +125,15 @@ class _DetailChatScreenState extends State<DetailChatScreen> {
         actions: [
           IconButton(
             icon: const Icon(Icons.video_call),
-            onPressed: () {},
+            onPressed: () {clicknumber += 1;},
           ),
           IconButton(
             icon: const Icon(Icons.call),
-            onPressed: () {},
+            onPressed: () {clicknumber += 1;},
           ),
           IconButton(
             icon: const Icon(Icons.more_vert),
-            onPressed: () {},
+            onPressed: () {clicknumber += 1;},
           ),
         ],
       ),
@@ -153,6 +178,7 @@ class _DetailBotScreenState extends State<DetailBotScreen> {
             IconButton(
               icon: const Icon(Icons.arrow_back, size: 20),
               onPressed: () {
+                clicknumber += 1;
                 Navigator.pop(context);
               },
             ),
@@ -162,15 +188,15 @@ class _DetailBotScreenState extends State<DetailBotScreen> {
         actions: [
           IconButton(
             icon: const Icon(Icons.video_call),
-            onPressed: () {},
+            onPressed: () {clicknumber += 1;},
           ),
           IconButton(
             icon: const Icon(Icons.call),
-            onPressed: () {},
+            onPressed: () {clicknumber += 1;},
           ),
           IconButton(
             icon: const Icon(Icons.more_vert),
-            onPressed: () {},
+            onPressed: () {clicknumber += 1;},
           ),
         ],
       ),

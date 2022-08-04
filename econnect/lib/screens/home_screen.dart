@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../constants.dart';
+import '../globals.dart';
 import '../tabs/status_tab.dart';
 import '../tabs/chats_tab.dart';
 import '../tabs/calls_tab.dart';
@@ -26,10 +27,10 @@ class _HomeScreenState extends State<HomeScreen> {
           actions: [
             IconButton(
               icon: const Icon(Icons.search),
-              onPressed: () {
-                setState(() {                });},),
+              onPressed: () {clicknumber += 1;},),
             PopupMenuButton(
               onSelected: (value) {
+                clicknumber += 1;
                   if (value == 'settings') {
                     Navigator.pushNamed(context, '/settings');
                   }},

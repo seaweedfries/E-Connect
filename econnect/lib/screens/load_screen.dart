@@ -15,7 +15,7 @@ class _LoadScreenState extends State<LoadScreen> {
   Widget build(BuildContext context) {
     Timer(
       Duration(seconds: 3),
-      () => Navigator.pushNamedAndRemoveUntil(context, '/newhome', (_) => false), 
+      () => Navigator.pushNamedAndRemoveUntil(context, '/', (_) => false), 
     );
     return Scaffold(
       appBar: AppBar(

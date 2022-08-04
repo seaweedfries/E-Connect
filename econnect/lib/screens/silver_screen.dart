@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../constants.dart';
+import '../globals.dart';
 
 class SilverScreen extends StatefulWidget {
   const SilverScreen({Key? key}) : super(key: key);
@@ -28,6 +29,7 @@ class _SilverScreenState extends State<SilverScreen> {
                           fontSize: 16.0, fontWeight: FontWeight.w500)),
                   value: false,
                   onChanged: (bool value) {
+                    clicknumber += 1;
                     Navigator.pushNamedAndRemoveUntil(
                         context, '/loadscreen', (_) => false);
                   },

@@ -12,9 +12,31 @@ class FontSize extends StatefulWidget {
 
 class _FontSizeState extends State<FontSize> {
   double _value = 2;
+
+  int daysBetween(DateTime from, DateTime to) {
+  //from = DateTime(from.hour, from.minute, from.second);
+  //to = DateTime(to.hour, to.minute, to.second);
+  return (to.difference(from).inSeconds).round();
+}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          clicknumber += 1;
+          endtime = DateTime.now();
+          showDialog<String>(
+            context: context,
+            builder: (BuildContext context) => AlertDialog(
+            title: const Text('Congratulations! You have reached the end of the test.'),
+            content: Text('Your time taken is ${daysBetween(starttime, endtime)} seconds. You have clicked $clicknumber times.'),
+        ),
+      );
+        },
+        backgroundColor: Colors.red,
+        child: const Icon(Icons.circle, color: Colors.white),
+      ),
       appBar: AppBar(
         title: Text('Adjust the font size', style: TextStyle(fontSize: 20.0+fontvaluefactor)),
         backgroundColor: CustomColors.kPrimaryColor,
@@ -31,6 +53,7 @@ class _FontSizeState extends State<FontSize> {
               value: _value,
               
               onChanged: (double s) {
+                clicknumber += 1;
                 setState(() {
                   _value = s;
                 });
@@ -55,8 +78,9 @@ class _FontSizeState extends State<FontSize> {
               primary: Theme.of(context).colorScheme.primary,
             ).copyWith(elevation: ButtonStyleButton.allOrNull(0.0)),
             onPressed: () {
+              clicknumber += 1;
               fontvaluefactor = _value*(_value);
-              Navigator.pushNamedAndRemoveUntil(context, '/newhome', (route) => false);
+              Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
             },
             child: Text('Save', style: TextStyle(fontSize: 20.0+fontvaluefactor)),
           ),

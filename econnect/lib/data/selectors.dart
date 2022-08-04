@@ -8,7 +8,7 @@ final Map<String, List<String>> input = {
     'After that, you can either click on the contact history to make a call,',
     'Or click on the floating call button on the bottom right of the screen to look for your contact.'
   ],
-  'send a message': [
+  'message': [
     'Sure, I can explain step by step!',
     'First, go back to the main page by clicking on the arrow at the top left of the page',
     'Then click on the "Chats" tab to go to the Messages section.',
@@ -44,7 +44,7 @@ final Map<String, List<String>> input = {
   'turn off': ['You can turn me on by telling me "Turn on". Goodbye!'],
 
   //general
-  'suggest something': [
+  'suggest': [
     'Based on your past interests with your contacts,',
     'Here is a suggested video for you to watch',
     'Title: How and where to find your thermos bottle',
@@ -90,4 +90,7 @@ final Map<String, List<String>> input = {
     'Ellie eats more rice than a normal person',
     'Ellie orz a lot',
   ],
+  'font' : [
+    'Would you like to head directly to the Font Size page?',
+  ]
 };

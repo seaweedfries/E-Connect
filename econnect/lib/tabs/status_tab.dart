@@ -15,7 +15,7 @@ class _StatusTabState extends State<StatusTab> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {clicknumber += 1;},
         backgroundColor: CustomColors.kPrimaryColor,
         child: const Icon(Icons.camera_alt),
       ),

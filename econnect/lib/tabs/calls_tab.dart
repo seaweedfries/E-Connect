@@ -13,7 +13,9 @@ class CallTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          clicknumber += 1;
+        },
         backgroundColor: CustomColors.kPrimaryColor,
         child: const Icon(Icons.add_call),
       ),
@@ -34,6 +36,7 @@ class CallTab extends StatelessWidget {
           ),
         ),
         onTap: () {
+          clicknumber += 1;
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -58,11 +61,11 @@ class DetailCallScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: Icon(Icons.chat),
-            onPressed: () {},
+            onPressed: () {clicknumber += 1;},
           ),
           IconButton(
             icon: Icon(Icons.more_vert),
-            onPressed: () {},
+            onPressed: () {clicknumber += 1;},
           ),
         ],
       ),
@@ -93,7 +96,7 @@ class DetailCallScreen extends StatelessWidget {
               IconButton(
                 icon: Icon(Icons.call),
                 onPressed: () {
-                  //Callingscreen();
+                  clicknumber += 1;
                 },
               ),
             ],
